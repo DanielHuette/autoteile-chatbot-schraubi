@@ -355,7 +355,7 @@ python bench/diagramme.py
 ## Tests
 
 <!-- MESSWERTE-TESTS -->
-**139 automatische Tests** in 8 Dateien, alle grün. Sie laufen bei jeder Änderung über GitHub Actions – zusammen mit der Stilprüfung und der Messreihe zur Trefferqualität.
+**140 automatische Tests** in 8 Dateien, alle grün. Sie laufen bei jeder Änderung über GitHub Actions – zusammen mit der Stilprüfung und der Messreihe zur Trefferqualität.
 <!-- /MESSWERTE-TESTS -->
 
 Die Tests laufen gegen eine **echte** PostgreSQL-Datenbank mit

@@ -121,7 +121,7 @@ wiederholst.
 > • Barrierefreiheit: 17 px Grundschrift, 48 px Knopfhöhe, vollständige
 >   Tastaturbedienung, Beschriftungen für Vorlesesoftware
 > • Einbau beim Betreiber mit einer Zeile HTML
-> • <!-- MESSWERTE-TESTZAHL -->139<!-- /MESSWERTE-TESTZAHL --> automatische Tests, Dauerprüfung bei jeder Änderung
+> • <!-- MESSWERTE-TESTZAHL -->140<!-- /MESSWERTE-TESTZAHL --> automatische Tests, Dauerprüfung bei jeder Änderung
 > • Betriebsanleitung in Alltagssprache, mit Notfallplan und
 >   Rechtsaufklärung
 >
