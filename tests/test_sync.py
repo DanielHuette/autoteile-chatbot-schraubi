@@ -135,3 +135,33 @@ def test_katalog_wird_nach_abgleich_neu_geladen(db, embedder, bestand):
     suche.katalog.verwerfen()
     erkennung = suche.katalog.erkennen("Rückleuchte Nio ET5")
     assert erkennung.marke == "Nio", "neue Marke muss sofort erkannt werden"
+
+
+def test_katalog_verwerfen_wirkt_auch_direkt_nach_dem_start(db, embedder, bestand,
+                                                            monkeypatch):
+    """Der Verfall darf nicht an der Laufzeit des Rechners haengen.
+
+    time.monotonic() zaehlt ab dem Rechnerstart. Wird "noch nie
+    geladen" als 0.0 gespeichert, dann gilt "jetzt - 0.0 < 300" in den
+    ersten fuenf Minuten nach einem Neustart - der Katalog wuerde als
+    frisch gewertet, obwohl er leer oder verworfen ist. Genau in dieser
+    Zeitspanne laeuft aber der naechtliche Lagerabgleich nach einem
+    Neustart des Dienstes. Dieser Test stellt die Uhr auf einen
+    frisch gestarteten Rechner.
+    """
+    from app import katalog as katalog_modul
+    from app.search import TeileSuche
+
+    monkeypatch.setattr(katalog_modul.time, "monotonic", lambda: 12.0)
+
+    suche = TeileSuche(db, embedder)
+    suche.katalog.neu_laden()
+    assert "Nio" not in suche.katalog._marken.values()
+
+    Abgleich(db, embedder).ausfuehren(
+        [{**GUT, "sku": "NEUSTART-1", "brand": "Nio", "model": "ET7",
+          "subcategory": "Rückleuchte"}],
+        vollabgleich=False,
+    )
+    suche.katalog.verwerfen()
+    assert suche.katalog.erkennen("Rückleuchte Nio ET7").marke == "Nio"
