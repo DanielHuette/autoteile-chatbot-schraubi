@@ -44,10 +44,24 @@ ARTEN = {
 }
 
 
+# Jeder Kasten ist gleich hoch. Das Schaubild zeigt den Weg, nicht den
+# Inhalt der einzelnen Stufen - Erklaerungen stehen in der README, nicht
+# in Kleinschrift im Bild.
+KASTEN_HOEHE = 64
+
+# Die Schrift im Kasten. Es wird eine Festbreitenschrift verwendet:
+# dort ist jedes Zeichen genau 0,6 der Schriftgroesse breit, die Breite
+# eines Textes also exakt berechenbar - ohne die Schrift zu laden.
+SCHRIFT_GROSS = 15.0
+SCHRIFT_KLEIN = 12.5
+ZEICHENBREITE = 0.6
+
+
 class Kasten:
-    def __init__(self, kennung, x, y, b, h, art, titel, zeilen, zeichen=""):
-        self.kennung, self.x, self.y, self.b, self.h = kennung, x, y, b, h
-        self.art, self.titel, self.zeilen, self.zeichen = art, titel, zeilen, zeichen
+    def __init__(self, kennung, x, y, b, art, titel, zeichen=""):
+        self.kennung, self.x, self.y, self.b = kennung, x, y, b
+        self.h = KASTEN_HOEHE
+        self.art, self.titel, self.zeichen = art, titel, zeichen
 
     @property
     def mitte_rechts(self): return (self.x + self.b, self.y + self.h / 2)
@@ -70,50 +84,35 @@ class Kasten:
 S1, S2, S3, S4 = 36, 340, 644, 948
 BR, BR4 = 212, 212
 BAHN = {1: (S1 + BR + S2) / 2, 2: (S2 + BR + S3) / 2, 3: (S3 + BR + S4) / 2}
-KOPF = 104
+KOPF = 78
 
-Z_KUNDE = KOPF + 8      # Zone 1: Kundenweg
-Z_SYNC = KOPF + 456     # Zone 2: taeglicher Abgleich
-Z_BETRIEB = KOPF + 580  # Zone 3: Betriebsleitung
+# Die drei Zonen. Der Abstand ist so gewaehlt, dass die Trennlinie
+# zwischen zwei Zonen in einem Bereich liegt, in dem kein Kasten steht.
+Z_KUNDE = KOPF + 12     # Zone 1: Kundenweg
+Z_SYNC = KOPF + 420     # Zone 2: taeglicher Abgleich
+Z_BETRIEB = KOPF + 540  # Zone 3: Betriebsleitung
 
 KAESTEN = [
     # ---- Zone 1: der Weg einer Kundenfrage ----
-    Kasten("kunde", S1, Z_KUNDE + 36, BR, 82, "aussen", "Kunde, 72 Jahre",
-           ["keine Teilenummer,", "beschreibt den Schaden"], "person"),
-    Kasten("widget", S2, Z_KUNDE, BR, 98, "widget", "Widget \u00bbSchraubi\u00ab",
-           ["ein <script>-Tag", "Klick-Interview", "17 px, Kn\u00f6pfe ab 48 px"], "fenster"),
-    Kasten("regeln", S3, Z_KUNDE + 36, BR, 72, "sperre", "Schutzregeln",
-           ["Umsatz? Marge?", "\u2192 blockiert"], "schild"),
-    Kasten("verstehen", S3, Z_KUNDE + 136, BR, 88, "server", "Verstehen",
-           ["Tippfehler \u2192 Fachbegriff", "Bauteil, Marke, Modell,",
-            "Seite \u2013 aus dem Bestand"], "lupe"),
-    Kasten("suchen", S3, Z_KUNDE + 256, BR, 94, "server", "Suchen, dreifach",
-           ["Vektor, Volltext,", "Trigramm \u2013 per RRF", "Mindest\u00e4hnlichkeit 0,55"], "lupe"),
-    Kasten("antwort", S3, Z_KUNDE + 382, BR, 72, "server", "Antworten",
-           ["feste Vorlagen,", "Werte aus der Datenbank"], "sprech"),
-    Kasten("parts", S4, Z_KUNDE + 128, BR4, 106, "daten", "Tabelle parts",
-           ["Titel, Preis, Bestand,", "eBay-Kennzeichen,",
-            "embedding vector(384),", "fts tsvector"], "db"),
-    Kasten("hnsw", S4, Z_KUNDE + 268, BR4, 58, "daten", "HNSW-Index",
-           ["pgvector, Kosinus"], "index"),
-    Kasten("protokoll", S4, Z_KUNDE + 368, BR4, 84, "daten", "Protokolle",
-           ["ohne Namen, ohne IP", "90 Tage, dann gel\u00f6scht", "Suchen ohne Treffer"], "liste"),
+    Kasten("kunde", S1, Z_KUNDE, BR, "aussen", "Kunde", "person"),
+    Kasten("widget", S2, Z_KUNDE, BR, "widget", "Widget \u00bbSchraubi\u00ab", "fenster"),
+    Kasten("regeln", S3, Z_KUNDE, BR, "sperre", "Schutzregeln", "schild"),
+    Kasten("verstehen", S3, Z_KUNDE + 100, BR, "server", "Verstehen", "lupe"),
+    Kasten("suchen", S3, Z_KUNDE + 200, BR, "server", "Suchen", "lupe"),
+    Kasten("antwort", S3, Z_KUNDE + 300, BR, "server", "Antworten", "sprech"),
+    Kasten("parts", S4, Z_KUNDE + 100, BR4, "daten", "Tabelle parts", "db"),
+    Kasten("hnsw", S4, Z_KUNDE + 200, BR4, "daten", "HNSW-Index", "index"),
+    Kasten("protokoll", S4, Z_KUNDE + 300, BR4, "daten", "Protokolle", "liste"),
 
     # ---- Zone 2: der taegliche Lagerabgleich ----
-    Kasten("lager", S1, Z_SYNC + 6, BR, 64, "aussen", "Lagerprogramm",
-           ["t\u00e4glich, CSV oder JSON"], "datei"),
-    Kasten("sync", S2, Z_SYNC, BR, 76, "server", "/api/sync",
-           ["pr\u00fcft jede Zeile,", "bettet Ge\u00e4ndertes ein"], "pfeil"),
+    Kasten("lager", S1, Z_SYNC, BR, "aussen", "Lagerprogramm", "datei"),
+    Kasten("sync", S2, Z_SYNC, BR, "server", "/api/sync", "pfeil"),
 
     # ---- Zone 3: die Betriebsleitung ----
-    Kasten("betreiber", S1, Z_BETRIEB + 6, BR, 64, "betrieb", "Shop-Betreiber",
-           ["meldet sich getrennt an"], "person"),
-    Kasten("passwort", S2, Z_BETRIEB, BR, 76, "betrieb", "Eigenes Passwortfeld",
-           ["nicht \u00fcber den Chat,", "nie im Verlauf"], "schluessel"),
-    Kasten("anmeldung", S3, Z_BETRIEB, BR, 76, "betrieb", "Anmeldung",
-           ["scrypt, HMAC, Sperre", "30 Minuten g\u00fcltig"], "schluessel"),
-    Kasten("sales", S4, Z_BETRIEB, BR4, 76, "sperre", "Tabelle sales",
-           ["Rolle teilethuns_chat", "hat KEIN Leserecht"], "db"),
+    Kasten("betreiber", S1, Z_BETRIEB, BR, "betrieb", "Shop-Betreiber", "person"),
+    Kasten("passwort", S2, Z_BETRIEB, BR, "betrieb", "Passwortfeld", "schluessel"),
+    Kasten("anmeldung", S3, Z_BETRIEB, BR, "betrieb", "Anmeldung", "schluessel"),
+    Kasten("sales", S4, Z_BETRIEB, BR4, "sperre", "Tabelle sales", "db"),
 ]
 NACH_KENNUNG = {k.kennung: k for k in KAESTEN}
 
@@ -132,11 +131,11 @@ KANTEN = [
     ("lager", "sync", "", 1, "#7E9AB5"),
     ("sync", "parts", "t\u00e4glich", "rand", "#3FAE7A"),
     ("betreiber", "passwort", "", 1, "#E8A33B"),
-    ("passwort", "anmeldung", "eigener Weg", 2, "#E8A33B"),
-    ("anmeldung", "sales", "angemeldet", 3, "#E8A33B"),
+    ("passwort", "anmeldung", "getrennt", 2, "#E8A33B"),
+    ("anmeldung", "sales", "gesperrt", 3, "#E8A33B"),
 ]
 
-BREITE, HOEHE = 1244, 840
+BREITE, HOEHE = 1244, 716
 
 
 def zeichensatz(name: str, farbe: str) -> str:
@@ -159,19 +158,39 @@ def zeichensatz(name: str, farbe: str) -> str:
     return formen.get(name, "")
 
 
+def schriftgroesse(titel: str, platz: float) -> float:
+    """Groesste Schrift, mit der der Titel noch in den Platz passt.
+
+    Die Breite wird gerechnet, nicht geschaetzt: Festbreitenschrift,
+    also Zeichenzahl mal 0,6 mal Schriftgroesse. Dadurch kann keine
+    Beschriftung aus ihrem Kasten herauslaufen - auch dann nicht, wenn
+    spaeter ein laengerer Titel eingetragen wird.
+    """
+    passend = platz / (len(titel) * ZEICHENBREITE)
+    return min(SCHRIFT_GROSS, passend)
+
+
 def kasten_svg(k: Kasten) -> str:
     rand, fuell, _ = ARTEN[k.art]
+    # Platz fuer die Schrift: Kastenbreite minus Sinnbild und Raender.
+    links = k.x + 38
+    platz = k.b - 38 - 14
+    groesse = schriftgroesse(k.titel, platz)
+    mitte_y = k.y + k.h / 2
+
     t = [f'<g class="tt-knoten tt-art-{k.art}" data-kennung="{k.kennung}" tabindex="0" '
          f'style="--rand:{rand};--fuell:{fuell}">']
-    t.append(f'<rect class="tt-kasten" x="{k.x}" y="{k.y}" width="{k.b}" height="{k.h}" rx="13"/>')
+    t.append(f'<rect class="tt-kasten" x="{k.x}" y="{k.y}" width="{k.b}" '
+             f'height="{k.h}" rx="13"/>')
     # Farbstreifen links: ordnet den Kasten seiner Art zu, auch ohne Farbsehen
     t.append(f'<rect class="tt-streifen-b" x="{k.x}" y="{k.y+9}" width="4" '
              f'height="{k.h-18}" rx="2"/>')
     if k.zeichen:
-        t.append(f'<g transform="translate({k.x+15},{k.y+13})">{zeichensatz(k.zeichen, rand)}</g>')
-    t.append(f'<text class="tt-titel" x="{k.x+36}" y="{k.y+24}">{html.escape(k.titel)}</text>')
-    for i, z in enumerate(k.zeilen):
-        t.append(f'<text class="tt-zeile" x="{k.x+16}" y="{k.y+45+i*15}">{html.escape(z)}</text>')
+        t.append(f'<g transform="translate({k.x+15},{mitte_y-7:.1f})">'
+                 f'{zeichensatz(k.zeichen, rand)}</g>')
+    t.append(f'<text class="tt-titel" x="{links}" y="{mitte_y:.1f}" '
+             f'font-size="{groesse:.2f}" dominant-baseline="central">'
+             f'{html.escape(k.titel)}</text>')
     t.append("</g>")
     return "\n".join(t)
 
@@ -235,11 +254,12 @@ def kante_svg(von: str, nach: str, beschriftung: str, bahn, farbe: str, nr: int)
          f'<path class="tt-fluss" d="{d}" style="animation-delay:{nr*0.24:.2f}s"/>',
          f'<path class="tt-spitze" d="{d}" marker-end="url(#spitze-{farbe.lstrip("#")})"/>']
     if beschriftung:
-        breite = len(beschriftung) * 6.2 + 16
-        t.append(f'<rect class="tt-kantenfeld" x="{bx-breite/2:.1f}" y="{by-9:.1f}" '
-                 f'width="{breite:.1f}" height="18" rx="9"/>')
-        t.append(f'<text class="tt-kantentext" x="{bx:.1f}" y="{by+3.5:.1f}">'
-                 f'{html.escape(beschriftung)}</text>')
+        # Breite gerechnet, nicht geschaetzt: Festbreitenschrift.
+        breite = len(beschriftung) * SCHRIFT_KLEIN * ZEICHENBREITE + 20
+        t.append(f'<rect class="tt-kantenfeld" x="{bx-breite/2:.1f}" y="{by-11:.1f}" '
+                 f'width="{breite:.1f}" height="22" rx="11"/>')
+        t.append(f'<text class="tt-kantentext" x="{bx:.1f}" y="{by:.1f}" '
+                 f'dominant-baseline="central">{html.escape(beschriftung)}</text>')
     t.append("</g>")
     return "\n".join(t)
 
@@ -249,15 +269,14 @@ STIL = """
   .tt-kasten{fill:var(--fuell);stroke:var(--rand);stroke-width:1.5;
     transition:fill-opacity .18s ease, stroke-width .18s ease, filter .18s ease}
   .tt-streifen-b{fill:var(--rand);opacity:.85}
-  .tt-titel{fill:#EAF2F9;font:700 14.5px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
-  .tt-zeile{fill:#9DBAD3;font:400 12px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  .tt-titel{fill:#EAF2F9;font-weight:700;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
   .tt-knoten{cursor:default}
   /* Leuchten bei Mauskontakt. Wirkt nur dort, wo das Schaubild in die
      Seite eingebettet ist - als Bild geladen bekommt es keine Mausereignisse. */
   .tt-knoten:hover .tt-kasten, .tt-knoten:focus-visible .tt-kasten{
     stroke-width:2.6;filter:drop-shadow(0 0 7px var(--rand));fill-opacity:1.6}
-  .tt-knoten:hover .tt-titel{fill:#fff}
-  .tt-knoten:hover .tt-zeile{fill:#CDE1F1}
+  .tt-knoten:hover .tt-titel, .tt-knoten:focus-visible .tt-titel{fill:#fff}
 
   .tt-linie{stroke:var(--kante);stroke-width:1.5;fill:none;opacity:.32}
   .tt-spitze{stroke:none;fill:none}
@@ -267,11 +286,10 @@ STIL = """
     animation:tt-fliessen 3.4s linear infinite}
   @keyframes tt-fliessen{to{stroke-dashoffset:0}}
   .tt-kantenfeld{fill:#0E2135;stroke:var(--kante);stroke-width:.8;opacity:.94}
-  .tt-kantentext{fill:#BBD3E6;font:600 10.5px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  .tt-kantentext{fill:#D6E6F3;font:600 12.5px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
     text-anchor:middle}
-  .tt-kopfzeile{fill:#F4F9FD;font:800 20px system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-  .tt-unterzeile{fill:#9DBAD3;font:400 13px system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-  .tt-legende{fill:#9DBAD3;font:600 11.5px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  .tt-kopfzeile{fill:#F4F9FD;font:800 22px system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+  .tt-zone{fill:#BBD3E6;font:700 13px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
   @media (prefers-reduced-motion:reduce){
     .tt-fluss{animation:none;stroke-dasharray:none;stroke-dashoffset:0;opacity:.6}
   }
@@ -298,38 +316,29 @@ def diagramm() -> str:
     t.append(f'<rect width="{BREITE}" height="{HOEHE}" rx="16" fill="url(#raster)"/>')
 
     t.append('<text class="tt-kopfzeile" x="34" y="40">Teile Thuns – so arbeitet der Auskunftshelfer</text>')
-    t.append('<text class="tt-unterzeile" x="34" y="63">Zwei getrennte Wege durch dasselbe System. '
-             'Der Kundenweg erreicht die Verkaufsdaten nicht – das verhindert die Datenbank, nicht nur der Code.</text>')
 
     # Zonen benennen, damit klar ist, dass es drei getrennte Ablaeufe sind
-    for y, beschriftung in ((Z_KUNDE - 16, "WENN EIN KUNDE FRAGT"),
-                            (Z_SYNC - 16, "JEDE NACHT: LAGERABGLEICH"),
-                            (Z_BETRIEB - 16, "WENN DER BETREIBER ZAHLEN BRAUCHT")):
+    for y, beschriftung in ((Z_KUNDE - 18, "WENN EIN KUNDE FRAGT"),
+                            (Z_SYNC - 18, "JEDE NACHT: LAGERABGLEICH"),
+                            (Z_BETRIEB - 18, "WENN DER BETREIBER ZAHLEN BRAUCHT")):
         t.append(f'<line x1="34" y1="{y}" x2="{BREITE-34}" y2="{y}" stroke="{RASTER}" '
                  f'stroke-width="1"/>')
-        breite = len(beschriftung) * 6.4 + 20
-        t.append(f'<rect x="34" y="{y-10}" width="{breite:.0f}" height="20" rx="10" '
+        # Breite gerechnet aus Zeichenzahl, Schriftgroesse und Sperrung,
+        # damit die Schrift nie aus der Pille herauslaeuft.
+        schrift = 13.0
+        textbreite = len(beschriftung) * (schrift * ZEICHENBREITE + 1.0)
+        breite = textbreite + 26
+        t.append(f'<rect x="34" y="{y-13}" width="{breite:.0f}" height="26" rx="13" '
                  f'fill="{GRUND}" stroke="{RASTER}" stroke-width="1"/>')
-        t.append(f'<text x="{34+breite/2:.0f}" y="{y+4}" font-size="10.5" fill="{TEXT_LEISE}" '
-                 f'font-weight="700" text-anchor="middle" letter-spacing="1" '
-                 f'font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">'
-                 f'{beschriftung}</text>')
+        t.append(f'<text class="tt-zone" x="{34+breite/2:.0f}" y="{y}" '
+                 f'text-anchor="middle" dominant-baseline="central" '
+                 f'letter-spacing="1">{beschriftung}</text>')
 
     for nr, (von, nach, b, r, f) in enumerate(KANTEN):
         t.append(kante_svg(von, nach, b, r, f, nr))
     for k in KAESTEN:
         t.append(kasten_svg(k))
 
-    # Legende in einem eigenen Streifen, damit sie nichts ueberdeckt
-    y = HOEHE - 24
-    t.append(f'<line x1="34" y1="{HOEHE-52}" x2="{BREITE-34}" y2="{HOEHE-52}" '
-             f'stroke="{RASTER}" stroke-width="1"/>')
-    x = 34
-    for _art, (rand, fuell, label) in ARTEN.items():
-        t.append(f'<rect x="{x}" y="{y-9}" width="12" height="12" rx="3.5" fill="{fuell}" '
-                 f'stroke="{rand}" stroke-width="1.4"/>')
-        t.append(f'<text class="tt-legende" x="{x+18}" y="{y+1}">{html.escape(label)}</text>')
-        x += 24 + len(label) * 7.1
     t.append("</svg>")
     return "\n".join(t)
 
@@ -371,7 +380,55 @@ __SVG__
 """
 
 
+def pruefen() -> list[str]:
+    """Prueft das Schaubild, bevor es geschrieben wird.
+
+    Drei Dinge duerfen nie passieren: Schrift laeuft aus ihrem Kasten,
+    zwei Kaesten ueberdecken sich, oder ein Kasten ragt aus dem Bild.
+    Das wird hier gerechnet - so kann eine spaetere Aenderung am Text
+    oder an der Anordnung nicht unbemerkt ein kaputtes Bild erzeugen.
+    """
+    maengel: list[str] = []
+
+    for k in KAESTEN:
+        platz = k.b - 38 - 14
+        groesse = schriftgroesse(k.titel, platz)
+        if groesse < SCHRIFT_KLEIN:
+            maengel.append(
+                f"{k.kennung}: Titel {k.titel!r} braucht Schrift "
+                f"{groesse:.1f} px - zu klein, kuerzer benennen")
+        if k.x < 20 or k.x + k.b > BREITE - 20:
+            maengel.append(f"{k.kennung}: ragt waagerecht aus dem Bild")
+        if k.y < KOPF - 20 or k.y + k.h > HOEHE - 20:
+            maengel.append(f"{k.kennung}: ragt senkrecht aus dem Bild")
+
+    for i, a in enumerate(KAESTEN):
+        for b in KAESTEN[i + 1:]:
+            if (a.x < b.x + b.b and b.x < a.x + a.b
+                    and a.y < b.y + b.h and b.y < a.y + a.h):
+                maengel.append(f"{a.kennung} und {b.kennung} ueberdecken sich")
+
+    # Beschriftungen an den Pfeilen muessen in die freie Bahn passen,
+    # sonst liegen sie auf einem Kasten.
+    bahnbreite = S2 - (S1 + BR)
+    for _von, _nach, text, bahn, _farbe in KANTEN:
+        if text and bahn in BAHN:
+            breite = len(text) * SCHRIFT_KLEIN * ZEICHENBREITE + 20
+            if breite > bahnbreite:
+                maengel.append(
+                    f"Beschriftung {text!r} ist {breite:.0f} px breit, "
+                    f"die freie Bahn nur {bahnbreite} px")
+    return maengel
+
+
 def main() -> int:
+    maengel = pruefen()
+    if maengel:
+        print("Das Schaubild wurde NICHT geschrieben:")
+        for m in maengel:
+            print("  -", m)
+        return 1
+
     ziel = WURZEL / "docs" / "assets"
     ziel.mkdir(parents=True, exist_ok=True)
     svg = diagramm()
