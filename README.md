@@ -2,6 +2,11 @@
 
 # Schraubi – Auskunftshelfer für einen Gebrauchtteile-Versandshop
 
+[![Tests](https://github.com/DanielHuette/autoteile-chatbot-schraubi/actions/workflows/tests.yml/badge.svg)](https://github.com/DanielHuette/autoteile-chatbot-schraubi/actions/workflows/tests.yml)
+![Python](https://img.shields.io/badge/Python-3.12-3575A8)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16%20%2B%20pgvector-2C5078)
+![Lizenz](https://img.shields.io/badge/Lizenz-MIT-E8872B)
+
 Ein Chat-Assistent, der Kunden **ohne Teilenummer** zum richtigen
 Autoteil führt. Gebaut für Menschen, die nicht mit Computern
 aufgewachsen sind – und für einen Shop-Betreiber, der kein Fachmann ist.
