@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Teile Thuns &ndash; Aufbau des Auskunftshelfers</title>
+<style>
+  body{margin:0;background:#0A1A2B;color:#EAF2F9;
+       font:400 16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+       padding:26px 18px 60px}
+  main{max-width:1060px;margin:0 auto}
+  h1{font-size:24px;margin:0 0 6px}
+  p.unter{color:#9DBAD3;margin:0 0 22px;font-size:15px}
+  .rahmen{background:#0E2135;border:1px solid #1D3C5A;border-radius:18px;padding:10px;
+          box-shadow:0 18px 50px rgba(0,0,0,.45)}
+  .rahmen svg{width:100%;height:auto;display:block}
+  .hinweis{margin-top:20px;color:#9DBAD3;font-size:14px;border-left:3px solid #3575A8;
+           padding-left:14px}
+  a{color:#7FB6DE}
+</style>
+</head>
+<body>
+<main>
+  <h1>So arbeitet der Auskunftshelfer</h1>
+  <p class="unter">Mit der Maus &uuml;ber einen Kasten fahren, um ihn hervorzuheben.
+     Die Pfeile laufen in Flussrichtung.</p>
+  <div class="rahmen">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1244 840" width="1244" height="840" role="img" aria-label="Aufbau des Auskunftshelfers von Teile Thuns">
+<defs>
+<linearGradient id="verlauf" x1="0" y1="0" x2="0.6" y2="1"><stop offset="0" stop-color="#132B43"/><stop offset="1" stop-color="#0E2135"/></linearGradient>
+<pattern id="raster" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0v34" fill="none" stroke="#1D3C5A" stroke-width=".6" opacity=".5"/></pattern>
+<marker id="spitze-4FB3C9" viewBox="0 0 9 9" refX="8" refY="4.5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 9 4.5 0 9z" fill="#4FB3C9" opacity=".85"/></marker>
+<marker id="spitze-E8A33B" viewBox="0 0 9 9" refX="8" refY="4.5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 9 4.5 0 9z" fill="#E8A33B" opacity=".85"/></marker>
+<marker id="spitze-5189B8" viewBox="0 0 9 9" refX="8" refY="4.5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 9 4.5 0 9z" fill="#5189B8" opacity=".85"/></marker>
+<marker id="spitze-7E9AB5" viewBox="0 0 9 9" refX="8" refY="4.5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 9 4.5 0 9z" fill="#7E9AB5" opacity=".85"/></marker>
+<marker id="spitze-3FAE7A" viewBox="0 0 9 9" refX="8" refY="4.5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 9 4.5 0 9z" fill="#3FAE7A" opacity=".85"/></marker>
+<style>
+  .tt-grund{fill:url(#verlauf)}
+  .tt-kasten{fill:var(--fuell);stroke:var(--rand);stroke-width:1.5;
+    transition:fill-opacity .18s ease, stroke-width .18s ease, filter .18s ease}
+  .tt-streifen-b{fill:var(--rand);opacity:.85}
+  .tt-titel{fill:#EAF2F9;font:700 14.5px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  .tt-zeile{fill:#9DBAD3;font:400 12px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  .tt-knoten{cursor:default}
+  /* Leuchten bei Mauskontakt. Wirkt nur dort, wo das Schaubild in die
+     Seite eingebettet ist - als Bild geladen bekommt es keine Mausereignisse. */
+  .tt-knoten:hover .tt-kasten, .tt-knoten:focus-visible .tt-kasten{
+    stroke-width:2.6;filter:drop-shadow(0 0 7px var(--rand));fill-opacity:1.6}
+  .tt-knoten:hover .tt-titel{fill:#fff}
+  .tt-knoten:hover .tt-zeile{fill:#CDE1F1}
+
+  .tt-linie{stroke:var(--kante);stroke-width:1.5;fill:none;opacity:.32}
+  .tt-spitze{stroke:none;fill:none}
+  /* Laufende Strichlinie: zeigt die Richtung, auch ohne Pfeilspitze */
+  .tt-fluss{stroke:var(--kante);stroke-width:2.1;fill:none;stroke-linecap:round;
+    stroke-dasharray:9 150;stroke-dashoffset:159;opacity:.95;
+    animation:tt-fliessen 3.4s linear infinite}
+  @keyframes tt-fliessen{to{stroke-dashoffset:0}}
+  .tt-kantenfeld{fill:#0E2135;stroke:var(--kante);stroke-width:.8;opacity:.94}
+  .tt-kantentext{fill:#BBD3E6;font:600 10.5px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    text-anchor:middle}
+  .tt-kopfzeile{fill:#F4F9FD;font:800 20px system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+  .tt-unterzeile{fill:#9DBAD3;font:400 13px system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+  .tt-legende{fill:#9DBAD3;font:600 11.5px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  @media (prefers-reduced-motion:reduce){
+    .tt-fluss{animation:none;stroke-dasharray:none;stroke-dashoffset:0;opacity:.6}
+  }
+</style>
+</defs>
+<rect class="tt-grund" width="1244" height="840" rx="16"/>
+<rect width="1244" height="840" rx="16" fill="url(#raster)"/>
+<text class="tt-kopfzeile" x="34" y="40">Teile Thuns – so arbeitet der Auskunftshelfer</text>
+<text class="tt-unterzeile" x="34" y="63">Zwei getrennte Wege durch dasselbe System. Der Kundenweg erreicht die Verkaufsdaten nicht – das verhindert die Datenbank, nicht nur der Code.</text>
+<line x1="34" y1="96" x2="1210" y2="96" stroke="#1D3C5A" stroke-width="1"/>
+<rect x="34" y="86" width="148" height="20" rx="10" fill="#0E2135" stroke="#1D3C5A" stroke-width="1"/>
+<text x="108" y="100" font-size="10.5" fill="#9DBAD3" font-weight="700" text-anchor="middle" letter-spacing="1" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">WENN EIN KUNDE FRAGT</text>
+<line x1="34" y1="544" x2="1210" y2="544" stroke="#1D3C5A" stroke-width="1"/>
+<rect x="34" y="534" width="180" height="20" rx="10" fill="#0E2135" stroke="#1D3C5A" stroke-width="1"/>
+<text x="124" y="548" font-size="10.5" fill="#9DBAD3" font-weight="700" text-anchor="middle" letter-spacing="1" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">JEDE NACHT: LAGERABGLEICH</text>
+<line x1="34" y1="668" x2="1210" y2="668" stroke="#1D3C5A" stroke-width="1"/>
+<rect x="34" y="658" width="231" height="20" rx="10" fill="#0E2135" stroke="#1D3C5A" stroke-width="1"/>
+<text x="150" y="672" font-size="10.5" fill="#9DBAD3" font-weight="700" text-anchor="middle" letter-spacing="1" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">WENN DER BETREIBER ZAHLEN BRAUCHT</text>
+<g class="tt-kante" style="--kante:#5189B8">
+<path class="tt-linie" d="M248 189.0 L282.0 189.0 Q294.0 189.0, 294.0 177.0 L294.0 173.0 Q294.0 161.0, 306.0 161.0 L332 161.0"/>
+<path class="tt-fluss" d="M248 189.0 L282.0 189.0 Q294.0 189.0, 294.0 177.0 L294.0 173.0 Q294.0 161.0, 306.0 161.0 L332 161.0" style="animation-delay:0.00s"/>
+<path class="tt-spitze" d="M248 189.0 L282.0 189.0 Q294.0 189.0, 294.0 177.0 L294.0 173.0 Q294.0 161.0, 306.0 161.0 L332 161.0" marker-end="url(#spitze-5189B8)"/>
+</g>
+<g class="tt-kante" style="--kante:#5189B8">
+<path class="tt-linie" d="M552 161.0 L586.5 161.0 Q598.0 161.0, 598.0 172.5 L598.0 172.5 Q598.0 184.0, 609.5 184.0 L636 184.0"/>
+<path class="tt-fluss" d="M552 161.0 L586.5 161.0 Q598.0 161.0, 598.0 172.5 L598.0 172.5 Q598.0 184.0, 609.5 184.0 L636 184.0" style="animation-delay:0.24s"/>
+<path class="tt-spitze" d="M552 161.0 L586.5 161.0 Q598.0 161.0, 598.0 172.5 L598.0 172.5 Q598.0 184.0, 609.5 184.0 L636 184.0" marker-end="url(#spitze-5189B8)"/>
+<rect class="tt-kantenfeld" x="574.5" y="163.5" width="47.0" height="18" rx="9"/>
+<text class="tt-kantentext" x="598.0" y="176.0">Frage</text>
+</g>
+<g class="tt-kante" style="--kante:#4FB3C9">
+<path class="tt-linie" d="M750.0 220 L750.0 240"/>
+<path class="tt-fluss" d="M750.0 220 L750.0 240" style="animation-delay:0.48s"/>
+<path class="tt-spitze" d="M750.0 220 L750.0 240" marker-end="url(#spitze-4FB3C9)"/>
+</g>
+<g class="tt-kante" style="--kante:#4FB3C9">
+<path class="tt-linie" d="M750.0 336 L750.0 360"/>
+<path class="tt-fluss" d="M750.0 336 L750.0 360" style="animation-delay:0.72s"/>
+<path class="tt-spitze" d="M750.0 336 L750.0 360" marker-end="url(#spitze-4FB3C9)"/>
+</g>
+<g class="tt-kante" style="--kante:#4FB3C9">
+<path class="tt-linie" d="M750.0 462 L750.0 486"/>
+<path class="tt-fluss" d="M750.0 462 L750.0 486" style="animation-delay:0.96s"/>
+<path class="tt-spitze" d="M750.0 462 L750.0 486" marker-end="url(#spitze-4FB3C9)"/>
+</g>
+<g class="tt-kante" style="--kante:#3FAE7A">
+<path class="tt-linie" d="M856 292.0 L940 293.0"/>
+<path class="tt-fluss" d="M856 292.0 L940 293.0" style="animation-delay:1.20s"/>
+<path class="tt-spitze" d="M856 292.0 L940 293.0" marker-end="url(#spitze-3FAE7A)"/>
+<rect class="tt-kantenfeld" x="872.3" y="283.5" width="59.4" height="18" rx="9"/>
+<text class="tt-kantentext" x="902.0" y="296.0">Katalog</text>
+</g>
+<g class="tt-kante" style="--kante:#3FAE7A">
+<path class="tt-linie" d="M856 415.0 L899.0 415.0 Q902.0 415.0, 902.0 412.0 L902.0 412.0 Q902.0 409.0, 905.0 409.0 L940 409.0"/>
+<path class="tt-fluss" d="M856 415.0 L899.0 415.0 Q902.0 415.0, 902.0 412.0 L902.0 412.0 Q902.0 409.0, 905.0 409.0 L940 409.0" style="animation-delay:1.44s"/>
+<path class="tt-spitze" d="M856 415.0 L899.0 415.0 Q902.0 415.0, 902.0 412.0 L902.0 412.0 Q902.0 409.0, 905.0 409.0 L940 409.0" marker-end="url(#spitze-3FAE7A)"/>
+<rect class="tt-kantenfeld" x="872.3" y="403.0" width="59.4" height="18" rx="9"/>
+<text class="tt-kantentext" x="902.0" y="415.5">Abstand</text>
+</g>
+<g class="tt-kante" style="--kante:#3FAE7A">
+<path class="tt-linie" d="M856 530.0 L898.0 530.0 Q902.0 530.0, 902.0 526.0 L902.0 526.0 Q902.0 522.0, 906.0 522.0 L940 522.0"/>
+<path class="tt-fluss" d="M856 530.0 L898.0 530.0 Q902.0 530.0, 902.0 526.0 L902.0 526.0 Q902.0 522.0, 906.0 522.0 L940 522.0" style="animation-delay:1.68s"/>
+<path class="tt-spitze" d="M856 530.0 L898.0 530.0 Q902.0 530.0, 902.0 526.0 L902.0 526.0 Q902.0 522.0, 906.0 522.0 L940 522.0" marker-end="url(#spitze-3FAE7A)"/>
+<rect class="tt-kantenfeld" x="872.3" y="517.0" width="59.4" height="18" rx="9"/>
+<text class="tt-kantentext" x="902.0" y="529.5">Vorgang</text>
+</g>
+<g class="tt-kante" style="--kante:#7E9AB5">
+<path class="tt-linie" d="M248 598.0 L332 598.0"/>
+<path class="tt-fluss" d="M248 598.0 L332 598.0" style="animation-delay:1.92s"/>
+<path class="tt-spitze" d="M248 598.0 L332 598.0" marker-end="url(#spitze-7E9AB5)"/>
+</g>
+<g class="tt-kante" style="--kante:#3FAE7A">
+<path class="tt-linie" d="M552 598.0 L1202 598.0 Q1214 598.0, 1214 586.0 L1214 305.0 Q1214 293.0, 1202 293.0 L1168 293.0"/>
+<path class="tt-fluss" d="M552 598.0 L1202 598.0 Q1214 598.0, 1214 586.0 L1214 305.0 Q1214 293.0, 1202 293.0 L1168 293.0" style="animation-delay:2.16s"/>
+<path class="tt-spitze" d="M552 598.0 L1202 598.0 Q1214 598.0, 1214 586.0 L1214 305.0 Q1214 293.0, 1202 293.0 L1168 293.0" marker-end="url(#spitze-3FAE7A)"/>
+<rect class="tt-kantenfeld" x="853.3" y="578.0" width="59.4" height="18" rx="9"/>
+<text class="tt-kantentext" x="883.0" y="590.5">täglich</text>
+</g>
+<g class="tt-kante" style="--kante:#E8A33B">
+<path class="tt-linie" d="M248 722.0 L332 722.0"/>
+<path class="tt-fluss" d="M248 722.0 L332 722.0" style="animation-delay:2.40s"/>
+<path class="tt-spitze" d="M248 722.0 L332 722.0" marker-end="url(#spitze-E8A33B)"/>
+</g>
+<g class="tt-kante" style="--kante:#E8A33B">
+<path class="tt-linie" d="M552 722.0 L636 722.0"/>
+<path class="tt-fluss" d="M552 722.0 L636 722.0" style="animation-delay:2.64s"/>
+<path class="tt-spitze" d="M552 722.0 L636 722.0" marker-end="url(#spitze-E8A33B)"/>
+<rect class="tt-kantenfeld" x="555.9" y="713.0" width="84.2" height="18" rx="9"/>
+<text class="tt-kantentext" x="598.0" y="725.5">eigener Weg</text>
+</g>
+<g class="tt-kante" style="--kante:#E8A33B">
+<path class="tt-linie" d="M856 722.0 L940 722.0"/>
+<path class="tt-fluss" d="M856 722.0 L940 722.0" style="animation-delay:2.88s"/>
+<path class="tt-spitze" d="M856 722.0 L940 722.0" marker-end="url(#spitze-E8A33B)"/>
+<rect class="tt-kantenfeld" x="863.0" y="713.0" width="78.0" height="18" rx="9"/>
+<text class="tt-kantentext" x="902.0" y="725.5">angemeldet</text>
+</g>
+<g class="tt-knoten tt-art-aussen" data-kennung="kunde" tabindex="0" style="--rand:#7E9AB5;--fuell:rgba(126,154,181,.14)">
+<rect class="tt-kasten" x="36" y="148" width="212" height="82" rx="13"/>
+<rect class="tt-streifen-b" x="36" y="157" width="4" height="64" rx="2"/>
+<g transform="translate(51,161)"><circle cx="7" cy="5" r="3" stroke="#7E9AB5" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M1.5 14c0-3 2.5-5 5.5-5s5.5 2 5.5 5" stroke="#7E9AB5" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text class="tt-titel" x="72" y="172">Kunde, 72 Jahre</text>
+<text class="tt-zeile" x="52" y="193">keine Teilenummer,</text>
+<text class="tt-zeile" x="52" y="208">beschreibt den Schaden</text>
+</g>
+<g class="tt-knoten tt-art-widget" data-kennung="widget" tabindex="0" style="--rand:#5189B8;--fuell:rgba(81,137,184,.16)">
+<rect class="tt-kasten" x="340" y="112" width="212" height="98" rx="13"/>
+<rect class="tt-streifen-b" x="340" y="121" width="4" height="80" rx="2"/>
+<g transform="translate(355,125)"><rect x="1" y="2.5" width="12" height="10" rx="2" stroke="#5189B8" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M1 6h12M4 9h5" stroke="#5189B8" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text class="tt-titel" x="376" y="136">Widget »Schraubi«</text>
+<text class="tt-zeile" x="356" y="157">ein &lt;script&gt;-Tag</text>
+<text class="tt-zeile" x="356" y="172">Klick-Interview</text>
+<text class="tt-zeile" x="356" y="187">17 px, Knöpfe ab 48 px</text>
+</g>
+<g class="tt-knoten tt-art-sperre" data-kennung="regeln" tabindex="0" style="--rand:#D2605A;--fuell:rgba(210,96,90,.15)">
+<rect class="tt-kasten" x="644" y="148" width="212" height="72" rx="13"/>
+<rect class="tt-streifen-b" x="644" y="157" width="4" height="54" rx="2"/>
+<g transform="translate(659,161)"><path d="M7 1.5 12.5 4v4.5c0 2.6-2.2 4.6-5.5 5.5-3.3-.9-5.5-2.9-5.5-5.5V4z" stroke="#D2605A" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.8 7.4 6.4 9l3-3.2" stroke="#D2605A" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text class="tt-titel" x="680" y="172">Schutzregeln</text>
+<text class="tt-zeile" x="660" y="193">Umsatz? Marge?</text>
+<text class="tt-zeile" x="660" y="208">→ blockiert</text>
+</g>
+<g class="tt-knoten tt-art-server" data-kennung="verstehen" tabindex="0" style="--rand:#4FB3C9;--fuell:rgba(79,179,201,.14)">
+<rect class="tt-kasten" x="644" y="248" width="212" height="88" rx="13"/>
+<rect class="tt-streifen-b" x="644" y="257" width="4" height="70" rx="2"/>
+<g transform="translate(659,261)"><circle cx="6.2" cy="6.2" r="4.4" stroke="#4FB3C9" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.6 9.6 13 13" stroke="#4FB3C9" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text class="tt-titel" x="680" y="272">Verstehen</text>
+<text class="tt-zeile" x="660" y="293">Tippfehler → Fachbegriff</text>
+<text class="tt-zeile" x="660" y="308">Bauteil, Marke, Modell,</text>
+<text class="tt-zeile" x="660" y="323">Seite – aus dem Bestand</text>
+</g>
+<g class="tt-knoten tt-art-server" data-kennung="suchen" tabindex="0" style="--rand:#4FB3C9;--fuell:rgba(79,179,201,.14)">
+<rect class="tt-kasten" x="644" y="368" width="212" height="94" rx="13"/>
+<rect class="tt-streifen-b" x="644" y="377" width="4" height="76" rx="2"/>
+<g transform="translate(659,381)"><circle cx="6.2" cy="6.2" r="4.4" stroke="#4FB3C9" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.6 9.6 13 13" stroke="#4FB3C9" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text class="tt-titel" x="680" y="392">Suchen, dreifach</text>
+<text class="tt-zeile" x="660" y="413">Vektor, Volltext,</text>
+<text class="tt-zeile" x="660" y="428">Trigramm – per RRF</text>
+<text class="tt-zeile" x="660" y="443">Mindestähnlichkeit 0,55</text>
+</g>
+<g class="tt-knoten tt-art-server" data-kennung="antwort" tabindex="0" style="--rand:#4FB3C9;--fuell:rgba(79,179,201,.14)">
+<rect class="tt-kasten" x="644" y="494" width="212" height="72" rx="13"/>
+<rect class="tt-streifen-b" x="644" y="503" width="4" height="54" rx="2"/>
+<g transform="translate(659,507)"><path d="M1.5 3.5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H6l-3.2 2.6V10.5a2 2 0 0 1-1.3-2z" stroke="#4FB3C9" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text class="tt-titel" x="680" y="518">Antworten</text>
+<text class="tt-zeile" x="660" y="539">feste Vorlagen,</text>
+<text class="tt-zeile" x="660" y="554">Werte aus der Datenbank</text>
+</g>
+<g class="tt-knoten tt-art-daten" data-kennung="parts" tabindex="0" style="--rand:#3FAE7A;--fuell:rgba(63,174,122,.14)">
+<rect class="tt-kasten" x="948" y="240" width="212" height="106" rx="13"/>
+<rect class="tt-streifen-b" x="948" y="249" width="4" height="88" rx="2"/>
+<g transform="translate(963,253)"><ellipse cx="7" cy="3.4" rx="5.2" ry="2" stroke="#3FAE7A" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M1.8 3.4v7.2c0 1.1 2.3 2 5.2 2s5.2-.9 5.2-2V3.4" stroke="#3FAE7A" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M1.8 7c0 1.1 2.3 2 5.2 2s5.2-.9 5.2-2" stroke="#3FAE7A" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text class="tt-titel" x="984" y="264">Tabelle parts</text>
+<text class="tt-zeile" x="964" y="285">Titel, Preis, Bestand,</text>
+<text class="tt-zeile" x="964" y="300">eBay-Kennzeichen,</text>
+<text class="tt-zeile" x="964" y="315">embedding vector(384),</text>
+<text class="tt-zeile" x="964" y="330">fts tsvector</text>
+</g>
+<g class="tt-knoten tt-art-daten" data-kennung="hnsw" tabindex="0" style="--rand:#3FAE7A;--fuell:rgba(63,174,122,.14)">
+<rect class="tt-kasten" x="948" y="380" width="212" height="58" rx="13"/>
+<rect class="tt-streifen-b" x="948" y="389" width="4" height="40" rx="2"/>
+<g transform="translate(963,393)"><path d="M2 11.5 5 6.5l3 2.6 4-6.6" stroke="#3FAE7A" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="5" cy="6.5" r="1.1" stroke="#3FAE7A" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8" cy="9.1" r="1.1" stroke="#3FAE7A" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text class="tt-titel" x="984" y="404">HNSW-Index</text>
+<text class="tt-zeile" x="964" y="425">pgvector, Kosinus</text>
+</g>
+<g class="tt-knoten tt-art-daten" data-kennung="protokoll" tabindex="0" style="--rand:#3FAE7A;--fuell:rgba(63,174,122,.14)">
+<rect class="tt-kasten" x="948" y="480" width="212" height="84" rx="13"/>
+<rect class="tt-streifen-b" x="948" y="489" width="4" height="66" rx="2"/>
+<g transform="translate(963,493)"><path d="M2.5 3.5h9M2.5 7h9M2.5 10.5h6" stroke="#3FAE7A" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text class="tt-titel" x="984" y="504">Protokolle</text>
+<text class="tt-zeile" x="964" y="525">ohne Namen, ohne IP</text>
+<text class="tt-zeile" x="964" y="540">90 Tage, dann gelöscht</text>
+<text class="tt-zeile" x="964" y="555">Suchen ohne Treffer</text>
+</g>
+<g class="tt-knoten tt-art-aussen" data-kennung="lager" tabindex="0" style="--rand:#7E9AB5;--fuell:rgba(126,154,181,.14)">
+<rect class="tt-kasten" x="36" y="566" width="212" height="64" rx="13"/>
+<rect class="tt-streifen-b" x="36" y="575" width="4" height="46" rx="2"/>
+<g transform="translate(51,579)"><path d="M3 1.5h5l3.2 3.2v8.3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-10.5a1 1 0 0 1 1-1z" stroke="#7E9AB5" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 1.5v3.4h3.2" stroke="#7E9AB5" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text class="tt-titel" x="72" y="590">Lagerprogramm</text>
+<text class="tt-zeile" x="52" y="611">täglich, CSV oder JSON</text>
+</g>
+<g class="tt-knoten tt-art-server" data-kennung="sync" tabindex="0" style="--rand:#4FB3C9;--fuell:rgba(79,179,201,.14)">
+<rect class="tt-kasten" x="340" y="560" width="212" height="76" rx="13"/>
+<rect class="tt-streifen-b" x="340" y="569" width="4" height="58" rx="2"/>
+<g transform="translate(355,573)"><path d="M1.5 7h10" stroke="#4FB3C9" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.2 3.8 11.5 7l-3.3 3.2" stroke="#4FB3C9" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text class="tt-titel" x="376" y="584">/api/sync</text>
+<text class="tt-zeile" x="356" y="605">prüft jede Zeile,</text>
+<text class="tt-zeile" x="356" y="620">bettet Geändertes ein</text>
+</g>
+<g class="tt-knoten tt-art-betrieb" data-kennung="betreiber" tabindex="0" style="--rand:#E8A33B;--fuell:rgba(232,163,59,.15)">
+<rect class="tt-kasten" x="36" y="690" width="212" height="64" rx="13"/>
+<rect class="tt-streifen-b" x="36" y="699" width="4" height="46" rx="2"/>
+<g transform="translate(51,703)"><circle cx="7" cy="5" r="3" stroke="#E8A33B" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M1.5 14c0-3 2.5-5 5.5-5s5.5 2 5.5 5" stroke="#E8A33B" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text class="tt-titel" x="72" y="714">Shop-Betreiber</text>
+<text class="tt-zeile" x="52" y="735">meldet sich getrennt an</text>
+</g>
+<g class="tt-knoten tt-art-betrieb" data-kennung="passwort" tabindex="0" style="--rand:#E8A33B;--fuell:rgba(232,163,59,.15)">
+<rect class="tt-kasten" x="340" y="684" width="212" height="76" rx="13"/>
+<rect class="tt-streifen-b" x="340" y="693" width="4" height="58" rx="2"/>
+<g transform="translate(355,697)"><circle cx="4.6" cy="7" r="3.1" stroke="#E8A33B" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.7 7H13M11 7v2.6M9.3 7v2" stroke="#E8A33B" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text class="tt-titel" x="376" y="708">Eigenes Passwortfeld</text>
+<text class="tt-zeile" x="356" y="729">nicht über den Chat,</text>
+<text class="tt-zeile" x="356" y="744">nie im Verlauf</text>
+</g>
+<g class="tt-knoten tt-art-betrieb" data-kennung="anmeldung" tabindex="0" style="--rand:#E8A33B;--fuell:rgba(232,163,59,.15)">
+<rect class="tt-kasten" x="644" y="684" width="212" height="76" rx="13"/>
+<rect class="tt-streifen-b" x="644" y="693" width="4" height="58" rx="2"/>
+<g transform="translate(659,697)"><circle cx="4.6" cy="7" r="3.1" stroke="#E8A33B" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.7 7H13M11 7v2.6M9.3 7v2" stroke="#E8A33B" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text class="tt-titel" x="680" y="708">Anmeldung</text>
+<text class="tt-zeile" x="660" y="729">scrypt, HMAC, Sperre</text>
+<text class="tt-zeile" x="660" y="744">30 Minuten gültig</text>
+</g>
+<g class="tt-knoten tt-art-sperre" data-kennung="sales" tabindex="0" style="--rand:#D2605A;--fuell:rgba(210,96,90,.15)">
+<rect class="tt-kasten" x="948" y="684" width="212" height="76" rx="13"/>
+<rect class="tt-streifen-b" x="948" y="693" width="4" height="58" rx="2"/>
+<g transform="translate(963,697)"><ellipse cx="7" cy="3.4" rx="5.2" ry="2" stroke="#D2605A" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M1.8 3.4v7.2c0 1.1 2.3 2 5.2 2s5.2-.9 5.2-2V3.4" stroke="#D2605A" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M1.8 7c0 1.1 2.3 2 5.2 2s5.2-.9 5.2-2" stroke="#D2605A" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text class="tt-titel" x="984" y="708">Tabelle sales</text>
+<text class="tt-zeile" x="964" y="729">Rolle teilethuns_chat</text>
+<text class="tt-zeile" x="964" y="744">hat KEIN Leserecht</text>
+</g>
+<line x1="34" y1="788" x2="1210" y2="788" stroke="#1D3C5A" stroke-width="1"/>
+<rect x="34" y="807" width="12" height="12" rx="3.5" fill="rgba(126,154,181,.14)" stroke="#7E9AB5" stroke-width="1.4"/>
+<text class="tt-legende" x="52" y="817">von aussen</text>
+<rect x="129.0" y="807" width="12" height="12" rx="3.5" fill="rgba(81,137,184,.16)" stroke="#5189B8" stroke-width="1.4"/>
+<text class="tt-legende" x="147.0" y="817">im Browser</text>
+<rect x="224.0" y="807" width="12" height="12" rx="3.5" fill="rgba(79,179,201,.14)" stroke="#4FB3C9" stroke-width="1.4"/>
+<text class="tt-legende" x="242.0" y="817">Server</text>
+<rect x="290.6" y="807" width="12" height="12" rx="3.5" fill="rgba(63,174,122,.14)" stroke="#3FAE7A" stroke-width="1.4"/>
+<text class="tt-legende" x="308.6" y="817">Datenbank</text>
+<rect x="378.5" y="807" width="12" height="12" rx="3.5" fill="rgba(210,96,90,.15)" stroke="#D2605A" stroke-width="1.4"/>
+<text class="tt-legende" x="396.5" y="817">gesperrt</text>
+<rect x="459.3" y="807" width="12" height="12" rx="3.5" fill="rgba(232,163,59,.15)" stroke="#E8A33B" stroke-width="1.4"/>
+<text class="tt-legende" x="477.3" y="817">Betriebsleitung</text>
+</svg>
+  </div>
+  <p class="hinweis">Dieses Schaubild wird aus <code>bench/architektur.py</code> erzeugt.
+     &Auml;ndert sich der Aufbau, &auml;ndert sich das Bild &ndash; nicht umgekehrt.</p>
+</main>
+</body>
+</html>

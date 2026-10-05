@@ -1,0 +1,20 @@
+# Geheimnisse - duerfen NIE ins Repository
+.env
+.env.*
+!.env.example
+
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+*.egg-info/
+
+logs/
+*.log
+bench/results/*.tmp
+
+.DS_Store
+.idea/
+.vscode/

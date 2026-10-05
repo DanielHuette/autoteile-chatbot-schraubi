@@ -1,0 +1,41 @@
+# Bereitstellung bei Render. Diese Datei beschreibt den gesamten
+# Betrieb: Dienst, Datenbank, Geheimnisse. Beim Verbinden des
+# Repositorys wird alles daraus angelegt.
+services:
+  - type: web
+    name: teilethuns-chatbot
+    runtime: docker
+    plan: starter            # kleinste Stufe reicht fuer einen Shop dieser Groesse
+    healthCheckPath: /api/health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: teilethuns-db
+          property: connectionString
+      - key: EMBEDDING_PROVIDER
+        value: local
+      - key: EMBEDDING_DIM
+        value: "384"
+      # Diese drei werden einmalig in der Oberflaeche eingetragen.
+      # Erzeugen mit:  python -m app.passwort_hash
+      - key: ADMIN_PASSWORD_HASH
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: SYNC_API_KEY
+        generateValue: true
+      - key: ALLOWED_ORIGINS
+        sync: false          # z. B. https://www.ihr-shop.de
+      - key: SHOP_NAME
+        value: Teile Thuns
+      - key: OPERATOR_EMAIL
+        sync: false
+      - key: OPERATOR_PHONE
+        sync: false
+      - key: EBAY_SHOP_URL
+        sync: false
+
+databases:
+  - name: teilethuns-db
+    plan: basic-256mb
+    postgresMajorVersion: "16"

@@ -1,0 +1,79 @@
+{
+  "suchtexte": 16,
+  "wiederholungen": 30,
+  "einbettung": {
+    "anbieter": "local",
+    "dimensionen": 384
+  },
+  "ergebnis": {
+    "1000": {
+      "teile": 1000,
+      "sequenziell": {
+        "median_ms": 1.41,
+        "mittel_ms": 1.45,
+        "p95_ms": 1.74,
+        "min_ms": 1.31,
+        "max_ms": 1.74
+      },
+      "hnsw": {
+        "median_ms": 1.41,
+        "mittel_ms": 1.43,
+        "p95_ms": 1.57,
+        "min_ms": 1.28,
+        "max_ms": 1.87
+      },
+      "beschleunigung": 1.0,
+      "recall_at_k": 1.0,
+      "k": 10,
+      "indexbauzeit_s": 0.21,
+      "indexgroesse": "2008 kB",
+      "indexgroesse_bytes": 2056192
+    },
+    "5000": {
+      "teile": 5000,
+      "sequenziell": {
+        "median_ms": 2.83,
+        "mittel_ms": 3.16,
+        "p95_ms": 4.43,
+        "min_ms": 2.59,
+        "max_ms": 4.43
+      },
+      "hnsw": {
+        "median_ms": 1.3,
+        "mittel_ms": 1.31,
+        "p95_ms": 1.43,
+        "min_ms": 1.16,
+        "max_ms": 1.58
+      },
+      "beschleunigung": 2.2,
+      "recall_at_k": 0.9938,
+      "k": 10,
+      "indexbauzeit_s": 0.77,
+      "indexgroesse": "10008 kB",
+      "indexgroesse_bytes": 10248192
+    },
+    "10000": {
+      "teile": 10000,
+      "sequenziell": {
+        "median_ms": 5.68,
+        "mittel_ms": 5.75,
+        "p95_ms": 6.57,
+        "min_ms": 5.16,
+        "max_ms": 6.57
+      },
+      "hnsw": {
+        "median_ms": 1.53,
+        "mittel_ms": 1.65,
+        "p95_ms": 2.04,
+        "min_ms": 1.33,
+        "max_ms": 2.64
+      },
+      "beschleunigung": 3.7,
+      "recall_at_k": 0.9938,
+      "k": 10,
+      "indexbauzeit_s": 1.19,
+      "indexgroesse": "20 MB",
+      "indexgroesse_bytes": 20488192
+    }
+  }
+}

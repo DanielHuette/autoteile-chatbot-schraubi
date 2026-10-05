@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Teile Thuns &ndash; Gebrauchtteile fuer Ihr Fahrzeug</title>
+<style>
+  :root{--dunkel:#15202b;--signal:#ff7a18;--rand:#d4dde6;--hell:#f7f9fb}
+  *{box-sizing:border-box}
+  body{margin:0;font:400 17px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+       color:var(--dunkel);background:#fff}
+  header{background:var(--dunkel);color:#fff;padding:18px 24px;display:flex;align-items:center;
+         justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .logo{font-size:23px;font-weight:800;letter-spacing:-.4px}
+  .logo span{color:var(--signal)}
+  nav a{color:#bcd0e4;text-decoration:none;margin-left:22px;font-size:16px}
+  nav a:hover{color:#fff}
+  .held{background:linear-gradient(160deg,#1d2b3a,#15202b);color:#fff;padding:64px 24px;text-align:center}
+  .held h1{font-size:clamp(28px,5vw,44px);margin:0 0 14px;line-height:1.15}
+  .held p{font-size:19px;color:#bcd0e4;max-width:620px;margin:0 auto 26px}
+  .held .pfeil{display:inline-block;background:var(--signal);color:var(--dunkel);font-weight:800;
+      padding:15px 28px;border-radius:12px;text-decoration:none;font-size:18px}
+  main{max-width:1060px;margin:0 auto;padding:48px 24px 90px}
+  h2{font-size:26px;margin:0 0 20px}
+  .raster{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+  .karte{border:2px solid var(--rand);border-radius:14px;padding:18px;background:var(--hell)}
+  .karte h3{margin:0 0 7px;font-size:18px}
+  .karte p{margin:0;font-size:16px;color:#44596e}
+  .preis{font-size:22px;font-weight:800;margin-top:12px}
+  .hinweisbox{margin-top:46px;border-left:5px solid var(--signal);background:#fff4e8;padding:18px 22px;
+      border-radius:0 12px 12px 0}
+  .hinweisbox h2{font-size:20px;margin:0 0 8px}
+  .hinweisbox p{margin:0;font-size:16px;color:#7a3c00}
+  footer{background:var(--dunkel);color:#8fa6bd;padding:28px 24px;font-size:15px;text-align:center}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Autoteile <span>Thuns</span></div>
+  <nav>
+    <a href="#">Teile</a><a href="#">Versand</a><a href="#">Ueber uns</a><a href="#">Kontakt</a>
+  </nav>
+</header>
+
+<section class="held">
+  <h1>Gebrauchte Autoteile &ndash; geprueft und sofort lieferbar</h1>
+  <p>Ueber 12.000 ausgebaute Originalteile aus Unfall- und Altfahrzeugen.
+     Keine Teilenummer zur Hand? Unser Helfer Schraubi fragt Sie einfach durch.</p>
+  <a class="pfeil" href="#" onclick="TeileThuns.oeffnen();return false;">Teil mit Schraubi finden</a>
+</section>
+
+<main>
+  <h2>Neu eingetroffen</h2>
+  <div class="raster">
+    <div class="karte"><h3>Rueckleuchte links</h3><p>Volkswagen Caddy III, Baujahr 2004&ndash;2015</p><div class="preis">80,50 &euro;</div></div>
+    <div class="karte"><h3>Scheinwerfer rechts</h3><p>Opel Astra H, Baujahr 2004&ndash;2010</p><div class="preis">46,50 &euro;</div></div>
+    <div class="karte"><h3>Lichtmaschine</h3><p>Audi A4 B8, Baujahr 2007&ndash;2015</p><div class="preis">212,00 &euro;</div></div>
+    <div class="karte"><h3>Schalldaempfer</h3><p>Opel Astra G, Baujahr 1998&ndash;2004</p><div class="preis">250,00 &euro;</div></div>
+  </div>
+
+  <div class="hinweisbox">
+    <h2>Diese Seite dient zum Ausprobieren</h2>
+    <p>Hier ist nur eine Zeile eingebaut: das script-Tag am Ende der Seite. Mehr braucht es nicht.
+       Der Helfer unten rechts arbeitet mit dem echten Lagerbestand aus der Datenbank.</p>
+    <p style="margin-top:10px">Probieren Sie: <em>&bdquo;das rote Glas hinten links&ldquo;</em>,
+       <em>&bdquo;mein Auspufftopf ist durchgerostet&ldquo;</em> oder
+       <em>&bdquo;Wie lange dauert der Versand nach &Ouml;sterreich?&ldquo;</em></p>
+  </div>
+</main>
+
+<footer>Teile Thuns &middot; Beispielseite zum Ausprobieren des Auskunftshelfers</footer>
+
+<!--
+  Das ist die gesamte Einbindung: eine Zeile.
+
+  Auf dem eigenen Rechner zeigt sie auf den lokalen Server. Im Betrieb
+  steht hier die Adresse des Chatbots, und data-api entfaellt - dann
+  wird sie aus der Adresse des Skripts abgeleitet:
+
+      <script src="https://ihre-adresse/widget.js" defer></script>
+-->
+<script src="http://127.0.0.1:8099/widget.js" data-api="http://127.0.0.1:8099" defer></script>
+</body>
+</html>
