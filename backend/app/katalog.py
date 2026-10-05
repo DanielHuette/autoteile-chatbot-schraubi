@@ -21,6 +21,14 @@ from .vokabular import erweitern, stamm, tippfehler_korrigieren
 
 CACHE_SEKUNDEN = 300
 
+# Kennzeichnet "noch nie geladen" bzw. "verworfen". Bewusst -inf und
+# nicht 0.0: time.monotonic() zaehlt ab dem Rechnerstart, ist also
+# kurz nach einem Neustart selbst noch klein. Mit 0.0 als Kennzeichen
+# haette "jetzt - 0.0 < 300" in den ersten fuenf Minuten nach dem
+# Start zugetroffen - der Katalog waere faelschlich als frisch
+# gewertet worden und verwerfen() haette nicht gewirkt.
+VERALTET = float("-inf")
+
 
 @dataclass
 class Erkennung:
@@ -34,7 +42,7 @@ class Katalog:
     def __init__(self, db) -> None:
         self.db = db
         self._lock = threading.Lock()
-        self._geladen = 0.0
+        self._geladen = VERALTET
         self._bauteile: dict[str, str] = {}      # Stamm -> Bauteilname
         self._kategorien: dict[str, str] = {}
         self._marken: dict[str, str] = {}
@@ -122,7 +130,7 @@ class Katalog:
         Abgleich kein Teil mehr da ist.
         """
         with self._lock:
-            self._geladen = 0.0
+            self._geladen = VERALTET
 
     # -- Erkennen ----------------------------------------------------
     def erkennen(self, text: str) -> Erkennung:

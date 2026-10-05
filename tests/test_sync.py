@@ -127,14 +127,29 @@ def test_katalog_wird_nach_abgleich_neu_geladen(db, embedder, bestand):
     suche.katalog.neu_laden()
     assert "Nio" not in suche.katalog._marken.values()
 
-    Abgleich(db, embedder).ausfuehren(
+    ergebnis = Abgleich(db, embedder).ausfuehren(
         [{**GUT, "sku": "NEUMARKE-1", "brand": "Nio", "model": "ET5",
           "subcategory": "Rückleuchte"}],
         vollabgleich=False,
     )
+    # Zuerst pruefen, dass das Teil ueberhaupt im Lager liegt. Sonst
+    # misst der Test weiter unten das Falsche: ein nicht erkannter
+    # Fahrzeughersteller kann auch daran liegen, dass der Abgleich die
+    # Zeile abgewiesen hat.
+    assert ergebnis.fehler == [], f"Abgleich hat die Zeile abgewiesen: {ergebnis.fehler}"
+    assert ergebnis.uebernommen == 1, f"Teil wurde nicht angelegt: {ergebnis.as_dict()}"
+    with db.conn() as c:
+        zeile = c.execute(
+            "SELECT brand, active FROM parts WHERE sku='NEUMARKE-1'"
+        ).fetchone()
+    assert zeile is not None and zeile["active"], f"Teil fehlt in der Tabelle: {zeile}"
+
     suche.katalog.verwerfen()
     erkennung = suche.katalog.erkennen("Rückleuchte Nio ET5")
-    assert erkennung.marke == "Nio", "neue Marke muss sofort erkannt werden"
+    assert erkennung.marke == "Nio", (
+        "neue Marke muss sofort erkannt werden; "
+        f"bekannte Marken: {sorted(set(suche.katalog._marken.values()))}"
+    )
 
 
 def test_katalog_verwerfen_wirkt_auch_direkt_nach_dem_start(db, embedder, bestand,
