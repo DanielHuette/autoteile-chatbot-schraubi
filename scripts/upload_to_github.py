@@ -54,6 +54,9 @@ AUSNAHMEN = {"scripts/upload_to_github.py", ".github/workflows/tests.yml", "test
 NICHT_HOCHLADEN = {".git", "__pycache__", ".pytest_cache", ".ruff_cache", "logs",
                    ".venv", "venv", "node_modules", ".idea", ".vscode"}
 
+# Endungen, die nie hochgeladen werden: Ablaufprotokolle von Durchlaeufen.
+NICHT_ENDUNGEN = {".log", ".err", ".pyc", ".pyo"}
+
 
 # ---------------------------------------------------------------------
 # Zugangsschluessel finden
@@ -197,6 +200,8 @@ def dateien_sammeln() -> list[pathlib.Path]:
                 return True
             if p.name == muster:
                 return True
+        if p.suffix.lower() in NICHT_ENDUNGEN:
+            return True
         # .env.example ist ausdruecklich erwuenscht
         if p.name.startswith(".env") and p.name != ".env.example":
             return True
