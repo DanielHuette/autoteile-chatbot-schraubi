@@ -1,0 +1,55 @@
+[project]
+name = "teilethuns-chatbot"
+version = "1.0.0"
+description = "Auskunftshelfer fuer einen Gebrauchtteile-Versandshop: pgvector-Teilesuche, Klick-Interview, eBay-Weiterleitung, getrennte Betriebsleitung"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["backend", "bench", "."]
+filterwarnings = ["ignore::DeprecationWarning"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+exclude = [".venv", "__pycache__"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "C4", "S", "SIM", "RUF", "PTH", "ANN"]
+ignore = [
+    "ANN401",  # Rohzeilen aus Lagerdateien und JSON sind bis zur Prüfung untypisiert.
+    "E501",    # Lange Texte für Kunden werden nicht umbrochen; ruff format setzt die Codezeilen.
+    "RUF001",  # Gedankenstrich und typografische Zeichen sind gewollter Kundentext.
+    "RUF002",
+    "RUF003",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = [
+    "S101",  # pytest prüft mit assert.
+    "S105",  # Feste Prüfgeheimnisse nur für die Testdatenbank.
+    "S603",  # Tests starten Projektskripte mit festem Aufruf.
+]
+"backend/app/search.py" = ["S608"]  # In die SQL-Texte werden nur Modulkonstanten eingesetzt.
+"bench/*" = [
+    "E402",  # Eigenständige Skripte setzen erst sys.path, dann folgen die Importe.
+    "S311",  # Zufall erzeugt reproduzierbare Testdaten, keine Geheimnisse.
+    "S608",  # Eingesetzt werden nur Konstanten und Zahlen, keine Eingaben.
+]
+"scripts/*" = [
+    "E402",  # Eigenständige Skripte setzen erst sys.path, dann folgen die Importe.
+    "S310",  # Ziel-URL legt der Betreiber selbst fest (BOT_URL).
+]
+"scripts/mitenv.py" = ["S603"]  # Startet absichtlich das Kommando aus der eigenen Kommandozeile.
+
+[tool.mypy]
+python_version = "3.11"
+files = ["backend/app"]
+mypy_path = "backend"
+explicit_package_bases = true
+strict = true
+disallow_untyped_defs = true
+
+[[tool.mypy.overrides]]
+module = ["fastembed", "fastembed.*", "pgvector", "pgvector.*"]
+ignore_missing_imports = true

@@ -1,0 +1,215 @@
+{
+  "bestand": 10000,
+  "anfragen": 207,
+  "einbettung": {
+    "anbieter": "local",
+    "modell": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "dimensionen": 384
+  },
+  "ergebnis": {
+    "A_volltext": {
+      "name": "A  Nur Volltextsuche (PostgreSQL)",
+      "top1_prozent": 61.8,
+      "top3_prozent": 62.8,
+      "mrr": 0.624,
+      "falsch_top1_prozent": 22.2,
+      "median_ms": 6.2,
+      "p95_ms": 23.7,
+      "gruppen": {
+        "aus_bestand": {
+          "n": 150,
+          "top1_prozent": 67.3,
+          "top3_prozent": 67.3
+        },
+        "normal": {
+          "n": 13,
+          "top1_prozent": 69.2,
+          "top3_prozent": 69.2
+        },
+        "schadensbild": {
+          "n": 8,
+          "top1_prozent": 87.5,
+          "top3_prozent": 87.5
+        },
+        "synonym": {
+          "n": 6,
+          "top1_prozent": 0.0,
+          "top3_prozent": 16.7
+        },
+        "tippfehler": {
+          "n": 3,
+          "top1_prozent": 0.0,
+          "top3_prozent": 0.0
+        },
+        "umgangssprache": {
+          "n": 15,
+          "top1_prozent": 26.7,
+          "top3_prozent": 26.7
+        },
+        "umschreibung": {
+          "n": 5,
+          "top1_prozent": 0.0,
+          "top3_prozent": 20.0
+        },
+        "unsinn": {
+          "n": 7,
+          "top1_prozent": 100.0,
+          "top3_prozent": 100.0
+        }
+      }
+    },
+    "B_vektor": {
+      "name": "B  Nur Vektorsuche (pgvector HNSW)",
+      "top1_prozent": 50.7,
+      "top3_prozent": 60.4,
+      "mrr": 0.566,
+      "falsch_top1_prozent": 49.3,
+      "median_ms": 48.3,
+      "p95_ms": 69.7,
+      "gruppen": {
+        "aus_bestand": {
+          "n": 150,
+          "top1_prozent": 57.3,
+          "top3_prozent": 68.7
+        },
+        "normal": {
+          "n": 13,
+          "top1_prozent": 61.5,
+          "top3_prozent": 76.9
+        },
+        "schadensbild": {
+          "n": 8,
+          "top1_prozent": 62.5,
+          "top3_prozent": 62.5
+        },
+        "synonym": {
+          "n": 6,
+          "top1_prozent": 16.7,
+          "top3_prozent": 16.7
+        },
+        "tippfehler": {
+          "n": 3,
+          "top1_prozent": 33.3,
+          "top3_prozent": 33.3
+        },
+        "umgangssprache": {
+          "n": 15,
+          "top1_prozent": 20.0,
+          "top3_prozent": 26.7
+        },
+        "umschreibung": {
+          "n": 5,
+          "top1_prozent": 20.0,
+          "top3_prozent": 20.0
+        },
+        "unsinn": {
+          "n": 7,
+          "top1_prozent": 0.0,
+          "top3_prozent": 0.0
+        }
+      }
+    },
+    "C_hybrid": {
+      "name": "C  Beides zusammengefuehrt (RRF)",
+      "top1_prozent": 77.8,
+      "top3_prozent": 83.1,
+      "mrr": 0.805,
+      "falsch_top1_prozent": 16.4,
+      "median_ms": 120.0,
+      "p95_ms": 173.2,
+      "gruppen": {
+        "aus_bestand": {
+          "n": 150,
+          "top1_prozent": 79.3,
+          "top3_prozent": 85.3
+        },
+        "normal": {
+          "n": 13,
+          "top1_prozent": 84.6,
+          "top3_prozent": 84.6
+        },
+        "schadensbild": {
+          "n": 8,
+          "top1_prozent": 100.0,
+          "top3_prozent": 100.0
+        },
+        "synonym": {
+          "n": 6,
+          "top1_prozent": 66.7,
+          "top3_prozent": 83.3
+        },
+        "tippfehler": {
+          "n": 3,
+          "top1_prozent": 33.3,
+          "top3_prozent": 66.7
+        },
+        "umgangssprache": {
+          "n": 15,
+          "top1_prozent": 60.0,
+          "top3_prozent": 60.0
+        },
+        "umschreibung": {
+          "n": 5,
+          "top1_prozent": 60.0,
+          "top3_prozent": 60.0
+        },
+        "unsinn": {
+          "n": 7,
+          "top1_prozent": 85.7,
+          "top3_prozent": 85.7
+        }
+      }
+    },
+    "D_voll": {
+      "name": "D  Vollstaendig (RRF + Bauteilerkennung + Schwelle)",
+      "top1_prozent": 93.2,
+      "top3_prozent": 93.2,
+      "mrr": 0.932,
+      "falsch_top1_prozent": 1.9,
+      "median_ms": 66.2,
+      "p95_ms": 116.2,
+      "gruppen": {
+        "aus_bestand": {
+          "n": 150,
+          "top1_prozent": 94.7,
+          "top3_prozent": 94.7
+        },
+        "normal": {
+          "n": 13,
+          "top1_prozent": 92.3,
+          "top3_prozent": 92.3
+        },
+        "schadensbild": {
+          "n": 8,
+          "top1_prozent": 100.0,
+          "top3_prozent": 100.0
+        },
+        "synonym": {
+          "n": 6,
+          "top1_prozent": 83.3,
+          "top3_prozent": 83.3
+        },
+        "tippfehler": {
+          "n": 3,
+          "top1_prozent": 100.0,
+          "top3_prozent": 100.0
+        },
+        "umgangssprache": {
+          "n": 15,
+          "top1_prozent": 80.0,
+          "top3_prozent": 80.0
+        },
+        "umschreibung": {
+          "n": 5,
+          "top1_prozent": 100.0,
+          "top3_prozent": 100.0
+        },
+        "unsinn": {
+          "n": 7,
+          "top1_prozent": 85.7,
+          "top3_prozent": 85.7
+        }
+      }
+    }
+  }
+}
