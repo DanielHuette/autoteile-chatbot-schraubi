@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Schraubi – Teile-Helfer für Gebrauchtteile-Shops</title>
+<meta name="description" content="Schraubi führt Kunden ohne Teilenummer zum richtigen Gebrauchtteil. Gemessen: 93,2 % richtige Teile auf Platz 1 bei 207 Anfragen gegen 10.000 Lagerteile.">
+<link rel="canonical" href="https://schraubi.speedofthespirit.dev/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://schraubi.speedofthespirit.dev/">
+<meta property="og:title" content="Schraubi – das richtige Gebrauchtteil, auch ohne Teilenummer">
+<meta property="og:description" content="Teile-Helfer für Gebrauchtteile-Shops. 93,2 % richtige Teile auf Platz 1, gemessen gegen 10.000 Lagerteile.">
+<meta property="og:image" content="https://schraubi.speedofthespirit.dev/assets/img/vorschau.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg">
+<style>
+@font-face { font-family: Inter; src: url(assets/fonts/inter-400.woff2) format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: Inter; src: url(assets/fonts/inter-600.woff2) format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: Inter; src: url(assets/fonts/inter-700.woff2) format("woff2"); font-weight: 700; font-display: swap; }
+@font-face { font-family: Barlow; src: url(assets/fonts/barlow-600.woff2) format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: Barlow; src: url(assets/fonts/barlow-700.woff2) format("woff2"); font-weight: 700; font-display: swap; }
+:root { --orange: #f29a2e; --ink: #14171b; --ink2: #1b1f24; --line: rgba(255,255,255,.12); --muted: #aab4c0; --text: #e8ecf0; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; overflow-x: clip; background: var(--ink); color: var(--text); font: 400 18px/1.6 Inter, Arial, sans-serif; }
+a { color: var(--orange); }
+.wrap { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+header.bar { position: sticky; top: 0; z-index: 5; background: rgba(14,15,17,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+header.bar .wrap { display: flex; align-items: center; gap: 22px; height: 64px; }
+.wordmark { display: flex; align-items: center; gap: 10px; font: 700 22px/1 Barlow, sans-serif; letter-spacing: .06em; text-transform: uppercase; color: #fff; text-decoration: none; margin-right: auto; }
+.wordmark img { width: 30px; height: 34px; }
+header nav { display: flex; gap: 20px; align-items: center; }
+header nav a { color: var(--text); text-decoration: none; font-size: 15px; font-weight: 600; }
+header nav a:hover { color: #fff; }
+header nav a.cta { background: var(--orange); color: var(--ink); padding: 9px 14px; border-radius: 4px; }
+.hero { position: relative; overflow: hidden; min-height: 640px; display: flex; align-items: center; }
+.hero .photo { position: absolute; inset: 0; background: url(assets/img/lager-motoren.jpg) 60% 55% / cover; }
+.hero .shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(14,15,17,.97) 0%, rgba(14,15,17,.88) 45%, rgba(14,15,17,.35) 80%); }
+.hero .wrap { position: relative; display: grid; grid-template-columns: 1.2fr .8fr; gap: 40px; align-items: center; padding: 70px 0; }
+.kicker { display: flex; align-items: center; gap: 12px; font: 600 16px/1 Barlow, sans-serif; letter-spacing: .16em; text-transform: uppercase; color: var(--orange); }
+.kicker::before { content: ""; width: 36px; height: 3px; background: var(--orange); }
+h1, h2 { font-family: Barlow, sans-serif; font-weight: 700; text-transform: uppercase; line-height: 1; color: #fff; }
+h1 { font-size: clamp(46px, 7vw, 84px); margin: 18px 0; }
+h2 { font-size: clamp(34px, 4.6vw, 54px); margin: 14px 0 18px; }
+.lead { font-size: 21px; color: #dfe4ea; max-width: 620px; }
+.buttons { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+.btn { display: inline-block; padding: 14px 20px; border-radius: 4px; font-weight: 700; text-decoration: none; }
+.btn.solid { background: var(--orange); color: var(--ink); }
+.btn.line { border: 2px solid rgba(255,255,255,.4); color: #fff; }
+.phone { border-radius: 32px; background: #0d0f12; padding: 10px; box-shadow: 0 30px 70px rgba(0,0,0,.6), 0 0 0 2px rgba(255,255,255,.12); }
+.phone img { display: block; width: 100%; height: auto; border-radius: 23px; }
+.hero .phone { max-width: 340px; justify-self: center; transform: rotate(3deg); }
+section.block { padding: 90px 0; border-top: 1px solid var(--line); }
+section.alt { background: var(--ink2); }
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 30px; }
+.panel { background: rgba(27,31,36,.9); border: 1px solid var(--line); border-top: 4px solid var(--orange); border-radius: 8px; padding: 24px 26px; }
+.panel h3 { margin: 0 0 8px; font: 700 24px/1.15 Barlow, sans-serif; text-transform: uppercase; color: #fff; }
+.panel p { margin: 0; font-size: 17px; }
+.quote { font: 600 clamp(26px, 3.4vw, 38px)/1.25 Barlow, sans-serif; color: #fff; border-left: 5px solid var(--orange); padding-left: 22px; margin: 24px 0; }
+.tablewrap { overflow-x: auto; margin-top: 26px; }
+table { border-collapse: collapse; width: 100%; min-width: 620px; }
+th { text-align: left; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); padding: 0 14px 12px 0; border-bottom: 1px solid var(--line); }
+td { padding: 14px 14px 14px 0; border-bottom: 1px solid var(--line); }
+td.n { text-align: right; font: 700 24px/1 Barlow, sans-serif; }
+tr.best td { color: #fff; font-weight: 600; }
+tr.best td.n { color: var(--orange); }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+ul.check { list-style: none; padding: 0; margin: 20px 0 0; }
+ul.check li { position: relative; padding: 0 0 14px 34px; }
+ul.check li::before { content: ""; position: absolute; left: 0; top: 6px; width: 18px; height: 18px; border-radius: 3px; background: var(--orange); }
+.phones { display: flex; gap: 22px; justify-content: center; }
+.phones .phone { width: 46%; max-width: 280px; }
+.phones .phone:first-child { transform: rotate(-3deg); }
+.phones .phone:last-child { transform: rotate(3deg); }
+code { display: block; background: #0b0c0e; border: 1px solid var(--line); border-radius: 6px; padding: 18px 20px; color: #ffd39b; font: 500 16px/1.5 Consolas, monospace; overflow-x: auto; }
+.small { font-size: 15px; color: var(--muted); }
+.present { position: relative; overflow: hidden; }
+.present .photo { position: absolute; inset: 0; background: url(assets/img/werkstatt-kaefer.jpg) center / cover; }
+.present .shade { position: absolute; inset: 0; background: rgba(14,15,17,.86); }
+.present .wrap { position: relative; text-align: center; }
+.present .lead { margin: 0 auto; }
+.present .buttons { justify-content: center; }
+footer { border-top: 1px solid var(--line); padding: 30px 0 44px; font-size: 15px; color: var(--muted); }
+footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.stripe { height: 8px; background: repeating-linear-gradient(135deg, var(--orange) 0 22px, #1a1a1a 22px 44px); }
+@media (max-width: 860px) {
+  header nav a:not(.cta) { display: none; }
+  .hero .wrap, .two { grid-template-columns: 1fr; }
+  .hero .phone { max-width: 260px; }
+  .grid3 { grid-template-columns: 1fr; }
+  section.block { padding: 64px 0; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="wrap">
+    <a class="wordmark" href="#top"><img src="favicon.svg" alt="" width="30" height="34">Schraubi</a>
+    <nav aria-label="Seitennavigation">
+      <a href="#messung">Messung</a>
+      <a href="#funktionen">Funktionen</a>
+      <a href="#einbau">Einbau</a>
+      <a href="https://github.com/DanielHuette/autoteile-chatbot-schraubi">GitHub</a>
+      <a class="cta" href="praesentation/">Präsentation</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="photo" aria-hidden="true"></div><div class="shade" aria-hidden="true"></div>
+  <div class="wrap">
+    <div>
+      <div class="kicker">Teile-Helfer für Gebrauchtteile-Shops</div>
+      <h1>Das richtige Gebrauchtteil. Auch ohne Teilenummer.</h1>
+      <p class="lead">Kunden schreiben, was sie brauchen – so, wie sie es am Tresen sagen würden. Schraubi findet das passende Teil im echten Lagerbestand, mit Preis, Zustand und Vergleichsnummern.</p>
+      <div class="buttons">
+        <a class="btn solid" href="praesentation/">Präsentation starten</a>
+        <a class="btn line" href="https://github.com/DanielHuette/autoteile-chatbot-schraubi">Quelltext auf GitHub</a>
+      </div>
+    </div>
+    <div class="phone"><img src="assets/img/h-vage-suche.jpg" alt="Schraubi zeigt eine Rückleuchte mit Preis, Zustand und Lagerstand" width="700" height="1060"></div>
+  </div>
+</section>
+<div class="stripe" aria-hidden="true"></div>
+
+<section class="block">
+  <div class="wrap">
+    <div class="kicker">Das Problem</div>
+    <h2>Wer keine Teilenummer hat, findet heute oft nichts</h2>
+    <div class="quote">„das rote Glas hinten links ist kaputt“</div>
+    <div class="grid3">
+      <div class="panel"><h3>Volltextsuche</h3><p>Kein Wort stimmt mit „Rückleuchte“ überein – kein Treffer.</p></div>
+      <div class="panel"><h3>Vektorsuche allein</h3><p>Findet oft eine Bremsscheibe für dasselbe Auto. Marke richtig, Teil falsch.</p></div>
+      <div class="panel"><h3>Folge für den Shop</h3><p>Rückversand, Anrufe – oder der Kunde kauft woanders.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="messung">
+  <div class="wrap">
+    <div class="kicker">Gemessen, nicht behauptet</div>
+    <h2>93,2 % richtige Teile auf Platz 1</h2>
+    <p>207 Kundenanfragen – Umgangssprache, Umschreibungen, Tippfehler, Teilenummern – gegen 10.000 Lagerteile. Dazu Anfragen, auf die es nichts geben darf.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Verfahren</th><th style="text-align:right">Richtiges Teil auf Platz 1</th><th style="text-align:right">Falsches Teil zuoberst</th></tr></thead>
+        <tbody>
+          <tr><td>Nur Volltextsuche</td><td class="n">61,8 %</td><td class="n">22,2 %</td></tr>
+          <tr><td>Nur Vektorsuche</td><td class="n">50,7 %</td><td class="n">49,3 %</td></tr>
+          <tr><td>Beides zusammengeführt</td><td class="n">77,8 %</td><td class="n">16,4 %</td></tr>
+          <tr class="best"><td>Schraubi vollständig</td><td class="n">93,2 %</td><td class="n">1,9 %</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small">Reproduzierbar mit <code style="display:inline;padding:2px 6px">bench/qualitaet.py</code>. Die Diagramme im Repository werden aus den Messdateien erzeugt.</p>
+  </div>
+</section>
+
+<section class="block" id="funktionen">
+  <div class="wrap two">
+    <div>
+      <div class="kicker">Beratung wie am Tresen</div>
+      <h2>Fragt nach, bis das Teil passt</h2>
+      <ul class="check">
+        <li>Klick-Interview ohne Tippen: Marke, Modell, Baujahr, Bauteil – jede Auswahl aus dem Lager.</li>
+        <li>Versteht Laiensprache: „Winker vorne“ wird zur Blinkleuchte, „Rueklicht“ zur Rückleuchte.</li>
+        <li>Ehrlich bei Lücken: unter der Mindestähnlichkeit „habe ich nicht“ statt falscher Teile.</li>
+        <li>Teile auf eBay bekommen einen großen Knopf dorthin, Lieferzeit mit Feiertagen in NRW.</li>
+      </ul>
+    </div>
+    <div class="phones">
+      <div class="phone"><img src="assets/img/b-interview-marke.jpg" alt="Auswahl der Marke mit Stückzahl aus dem Lager" width="700" height="1060" loading="lazy"></div>
+      <div class="phone"><img src="assets/img/i-ebay.jpg" alt="Knopf zum eBay-Angebot" width="700" height="1060" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<section class="block alt">
+  <div class="wrap two">
+    <div class="phones">
+      <div class="phone"><img src="assets/img/j-kunde-blockiert.jpg" alt="Kunde fragt nach Umsatz und erhält keine Auskunft" width="700" height="1060" loading="lazy"></div>
+      <div class="phone"><img src="assets/img/n-nachfrageluecken.jpg" alt="Betriebsleitung mit Umsatz, Bestsellern und Suchen ohne Treffer" width="700" height="1060" loading="lazy"></div>
+    </div>
+    <div>
+      <div class="kicker">Für den Betreiber</div>
+      <h2>Zahlen auf Zuruf, getrennt vom Kunden</h2>
+      <ul class="check">
+        <li>Umsatz, Bestseller und Lagerbestand im selben Fenster, mit eigener Anmeldung und getrenntem Verlauf.</li>
+        <li>„Suchen ohne Treffer“ zeigt Nachfrage, die der Bestand nicht deckt – eine fertige Einkaufsliste.</li>
+        <li>Kunden bekommen keine Betriebszahlen: Die Chat-Rolle hat in der Datenbank kein Leserecht auf Verkäufe.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="einbau">
+  <div class="wrap">
+    <div class="kicker">Einbau und Recht</div>
+    <h2>Eine Zeile Code, rechtlich sauber</h2>
+    <code>&lt;script src="https://ihre-adresse/widget.js" defer&gt;&lt;/script&gt;</code>
+    <div class="grid3">
+      <div class="panel"><h3>EU-KI-Verordnung</h3><p>Offenlegung nach Artikel 50 dreifach. Kein Hochrisiko-System.</p></div>
+      <div class="panel"><h3>Datenschutz</h3><p>Keine Namen, keine IP-Adressen, keine Cookies. Löschung nach 90 Tagen.</p></div>
+      <div class="panel"><h3>Barrierefreiheit</h3><p>Große Schrift, Knöpfe ab 48 px, volle Tastaturbedienung.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block present">
+  <div class="photo" aria-hidden="true"></div><div class="shade" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="kicker" style="justify-content:center">Für Shop-Betreiber</div>
+    <h2>Die Präsentation mit Rechenbeispiel</h2>
+    <p class="lead">Elf Folien: Problem, Lösung, gemessene Qualität, Rechenbeispiel mit Ihren eigenen Zahlen und der Weg zum Probelauf.</p>
+    <div class="buttons"><a class="btn solid" href="praesentation/">Präsentation starten</a></div>
+  </div>
+</section>
+</main>
+<div class="stripe" aria-hidden="true"></div>
+<footer>
+  <div class="wrap">
+    <div>Daniel Hütte · AI Agent Engineer · Münster</div>
+    <div>
+      <a href="https://github.com/DanielHuette/autoteile-chatbot-schraubi">Quelltext auf GitHub</a> ·
+      <a href="https://speedofthespirit.dev">speedofthespirit.dev</a> ·
+      <a href="https://speedofthespirit.dev/impressum/">Impressum</a> ·
+      <a href="https://speedofthespirit.dev/datenschutz/">Datenschutz</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

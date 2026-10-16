@@ -7,6 +7,8 @@
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16%20%2B%20pgvector-2C5078)
 ![Lizenz](https://img.shields.io/badge/Lizenz-MIT-E8872B)
 
+**Projektseite:** [schraubi.speedofthespirit.dev](https://schraubi.speedofthespirit.dev/) · **Präsentation:** [schraubi.speedofthespirit.dev/praesentation](https://schraubi.speedofthespirit.dev/praesentation/)
+
 Ein Chat-Assistent, der Kunden **ohne Teilenummer** zum richtigen
 Autoteil führt. Gebaut für Menschen, die nicht mit Computern
 aufgewachsen sind – und für einen Shop-Betreiber, der kein Fachmann ist.

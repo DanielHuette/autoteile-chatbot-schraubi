@@ -1,0 +1,20 @@
+html, body { margin: 0; height: 100%; background: var(--deck-bg, #0e0f11); overflow: hidden; }
+.deck { position: absolute; left: 50%; top: 50%; width: 1600px; height: 900px; transform-origin: center; }
+.deck > section { position: absolute; inset: 0; overflow: hidden; opacity: 0; visibility: hidden; transition: opacity .35s ease; }
+.deck > section.active { opacity: 1; visibility: visible; }
+.deck-ui { position: fixed; right: 18px; bottom: 16px; display: flex; gap: 8px; align-items: center; z-index: 10; font: 600 13px/1 Inter, Arial, sans-serif; }
+.deck-ui button { width: 38px; height: 38px; border-radius: 50%; border: 1px solid rgba(255,255,255,.25); background: rgba(20,22,26,.72); color: #fff; font-size: 16px; cursor: pointer; }
+.deck-ui button:hover { background: rgba(20,22,26,.95); }
+.deck-ui button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.deck-count { color: rgba(255,255,255,.8); background: rgba(20,22,26,.72); padding: 11px 12px; border-radius: 19px; min-width: 52px; text-align: center; }
+.deck-progress { position: fixed; left: 0; right: 0; bottom: 0; height: 4px; background: rgba(255,255,255,.08); z-index: 10; }
+.deck-progress i { display: block; height: 100%; width: 0; transition: width .35s ease; background: var(--deck-accent, #f29a2e); }
+.deck-home { position: fixed; left: 18px; bottom: 16px; z-index: 10; font: 600 13px/1 Inter, Arial, sans-serif; color: rgba(255,255,255,.85); background: rgba(20,22,26,.72); padding: 12px 14px; border-radius: 19px; text-decoration: none; }
+@media (prefers-reduced-motion: reduce) { .deck > section, .deck-progress i { transition: none; } }
+@media print {
+  @page { size: 1600px 900px; margin: 0; }
+  html, body { overflow: visible; height: auto; background: none; }
+  .deck { position: static; transform: none !important; width: auto; height: auto; }
+  .deck > section { position: relative; width: 1600px; height: 900px; opacity: 1; visibility: visible; page-break-after: always; break-after: page; }
+  .deck-ui, .deck-progress, .deck-home { display: none; }
+}
