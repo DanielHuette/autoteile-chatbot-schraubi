@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Schraubi – Spare Parts Assistant für Gebrauchtteile-Shops</title>
+<meta name="description" content="Schraubi führt Kunden ohne Teilenummer zum richtigen Gebrauchtteil. Gemessen: 93,2 % richtige Teile auf Platz 1 bei 207 Anfragen gegen 10.000 synthetische Lagerteile.">
+<meta name="theme-color" content="#02060f">
+<link rel="canonical" href="https://schraubi.speedofthespirit.dev/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://schraubi.speedofthespirit.dev/">
+<meta property="og:title" content="Schraubi – Spare Parts Assistant: das richtige Gebrauchtteil, auch ohne Teilenummer">
+<meta property="og:description" content="Teile-Helfer für Gebrauchtteile-Shops. 93,2 % richtige Teile auf Platz 1, gemessen gegen 10.000 synthetische Lagerteile.">
+<meta property="og:image" content="https://schraubi.speedofthespirit.dev/assets/img/vorschau.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="app/stil.css">
+<script src="app/frueh.js"></script>
+<script type="module" src="app/start.js"></script>
+</head>
+<body>
+<a class="sprung" href="#inhalt">Zum Inhalt springen</a>
+
+<svg class="vorrat" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="gold-metall" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f3e3bf"/><stop offset="0.32" stop-color="#cdb07a"/><stop offset="0.55" stop-color="#9c7f52"/><stop offset="0.78" stop-color="#e2c993"/><stop offset="1" stop-color="#8a6c43"/>
+    </linearGradient>
+    <symbol id="zeichen-repocity" viewBox="0 0 100 100">
+      <g fill="url(#gold-metall)">
+        <path fill-rule="evenodd" d="M50 2.5a47.5 47.5 0 1 1 0 95a47.5 47.5 0 1 1 0-95zm0 5a42.5 42.5 0 1 0 0 85a42.5 42.5 0 1 0 0-85z"/>
+        <rect x="31.8" y="46.3" width="8.8" height="18"/><rect x="47.1" y="24.9" width="8.8" height="39.4"/><rect x="62.6" y="36.6" width="8.8" height="27.7"/><rect x="12.4" y="64.9" width="75.2" height="4.4"/>
+      </g>
+    </symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.39-5.27 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></symbol>
+    <symbol id="i-projekt" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 2.8 20 7.4v9.2l-8 4.6-8-4.6V7.4z"/><circle cx="12" cy="12" r="3.3"/></g></symbol>
+    <symbol id="i-organigramm" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="9" y="2.8" width="6" height="5" rx="1.4"/><rect x="2.8" y="16.2" width="6" height="5" rx="1.4"/><rect x="15.2" y="16.2" width="6" height="5" rx="1.4"/><path d="M12 7.8v4.2M5.8 16.2V12h12.4v4.2"/></g></symbol>
+    <symbol id="i-benchmarks" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3 20.5h18"/><path d="M6.5 20.5v-6M12 20.5V5.5M17.5 20.5v-9"/></g></symbol>
+    <symbol id="i-praesentation" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="2.8" y="4.5" width="18.4" height="13" rx="2.4"/><path d="m10.2 8.3 4.6 2.7-4.6 2.7z" fill="currentColor"/><path d="M8 21h8" stroke-linecap="round"/></g></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5.2v13.6a.8.8 0 0 0 1.2.7l10.6-6.8a.8.8 0 0 0 0-1.4L9.2 4.5A.8.8 0 0 0 8 5.2z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path fill="currentColor" d="M7 4.5h3.4v15H7zM13.6 4.5H17v15h-3.4z"/></symbol>
+    <symbol id="i-zurueck" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m14.5 6-6 6 6 6"/></symbol>
+    <symbol id="i-vor" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m9.5 6 6 6-6 6"/></symbol>
+    <symbol id="i-schloss" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8.5 10.5V7.8a3.5 3.5 0 0 1 7 0v2.7"/></g></symbol>
+    <symbol id="i-db" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7"><ellipse cx="12" cy="6" rx="7" ry="2.8"/><path d="M5 6v12c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8V6M5 12c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8"/></g></symbol>
+  </defs>
+</svg>
+
+<header class="kopf">
+  <div class="rahmen kopf__innen">
+    <a class="marke" href="#projekt" data-reiter-link="projekt">
+      <svg class="marke__zeichen" width="36" height="36" aria-hidden="true"><use href="#zeichen-repocity"/></svg>
+      <span class="marke__text"><span class="marke__name">Schraubi – Spare Parts Assistant</span><span class="marke__dach">ein Projekt von RepoCity</span></span>
+    </a>
+    <a class="knopf knopf--leise kopf__github" href="https://github.com/DanielHuette/autoteile-chatbot-schraubi">
+      <svg width="18" height="18" aria-hidden="true"><use href="#i-github"/></svg><span>Quelltext<span class="nur-breit"> auf GitHub</span></span>
+    </a>
+  </div>
+</header>
+
+<main id="inhalt">
+
+<!-- ========== Reiter 1: Projekt ========== -->
+<section class="reiterflaeche" id="projekt" role="tabpanel" aria-labelledby="reiter-projekt" tabindex="-1">
+
+  <div class="buehne">
+    <div class="buehne__foto" aria-hidden="true"></div>
+    <div class="rahmen buehne__innen">
+      <div class="buehne__text">
+        <h1 class="buehne__titel">Das richtige Gebrauchtteil. Auch ohne Teilenummer.</h1>
+        <p class="buehne__lead">Kunden schreiben, was sie brauchen – so, wie sie es am Tresen sagen würden. Schraubi findet das passende Teil im echten Lagerbestand, mit Preis, Zustand und Vergleichsnummern.</p>
+        <p class="buehne__beleg">Gemessen an <span data-wert="q:anfragen" data-format="zahl">207</span> Kundenanfragen gegen <span data-wert="q:bestand" data-format="zahl">10.000</span> synthetische Lagerteile: In <strong><span data-wert="q:ergebnis.D_voll.top1_prozent" data-format="prozent">93,2 %</span></strong> der Fälle steht das richtige Teil ganz oben.</p>
+        <div class="knopfreihe">
+          <a class="knopf knopf--gold" href="#praesentation" data-reiter-link="praesentation">Präsentation ansehen</a>
+          <a class="knopf knopf--rand" href="#organigramm" data-reiter-link="organigramm">So arbeitet Schraubi</a>
+        </div>
+      </div>
+      <figure class="telefon buehne__telefon">
+        <img src="assets/img/h-vage-suche.jpg" alt="Schraubi zeigt eine Rückleuchte mit Preis, Zustand und Lagerstand" width="700" height="1060" fetchpriority="high">
+      </figure>
+    </div>
+  </div>
+
+  <section class="abschnitt" aria-labelledby="t-problem">
+    <div class="rahmen">
+      <h2 id="t-problem">Wer keine Teilenummer hat, findet heute oft nichts</h2>
+      <blockquote class="kundenstimme"><p>das rote Glas hinten links ist kaputt</p><footer>Ein Kunde, 72 Jahre alt, im Chat eines Gebrauchtteile-Shops</footer></blockquote>
+      <dl class="dreiklang">
+        <div><dt>Volltextsuche</dt><dd>Kein Wort stimmt mit „Rückleuchte“ überein.</dd><dd class="marke-fehler">kein Treffer</dd></div>
+        <div><dt>Vektorsuche allein</dt><dd>Findet oft eine Bremsscheibe für dasselbe Auto. Marke richtig, Teil falsch.</dd><dd class="marke-fehler">falsches Teil</dd></div>
+        <div><dt>Folge für den Shop</dt><dd>Rückversand, Anrufe – oder der Kunde kauft woanders.</dd><dd class="marke-fehler">verlorener Kauf</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="abschnitt abschnitt--flaeche" id="messung" aria-labelledby="t-messung">
+    <div class="rahmen">
+      <h2 id="t-messung"><span data-wert="q:ergebnis.D_voll.top1_prozent" data-format="prozent">93,2 %</span> richtige Teile auf Platz 1</h2>
+      <p class="einleitung"><span data-wert="q:anfragen" data-format="zahl">207</span> Kundenanfragen – Umgangssprache, Umschreibungen, Tippfehler, Teilenummern – gegen <span data-wert="q:bestand" data-format="zahl">10.000</span> synthetische Lagerteile. Dazu Anfragen, auf die es nichts geben darf. Entscheidend ist die zweite Zahl: Wie oft steht ein <em>falsches</em> Teil ganz oben?</p>
+      <ol class="vergleich" aria-label="Messung je Suchverfahren">
+        <li class="vergleich__zeile">
+          <span class="vergleich__name">Nur Volltextsuche</span>
+          <span class="vergleich__wert"><span class="vergleich__was">richtig auf Platz 1</span><b data-wert="q:ergebnis.A_volltext.top1_prozent" data-format="prozent">61,8 %</b></span>
+          <span class="vergleich__wert vergleich__wert--falsch"><span class="vergleich__was">falsch ganz oben</span><b data-wert="q:ergebnis.A_volltext.falsch_top1_prozent" data-format="prozent">22,2 %</b></span>
+        </li>
+        <li class="vergleich__zeile">
+          <span class="vergleich__name">Nur Vektorsuche</span>
+          <span class="vergleich__wert"><span class="vergleich__was">richtig auf Platz 1</span><b data-wert="q:ergebnis.B_vektor.top1_prozent" data-format="prozent">50,7 %</b></span>
+          <span class="vergleich__wert vergleich__wert--falsch"><span class="vergleich__was">falsch ganz oben</span><b data-wert="q:ergebnis.B_vektor.falsch_top1_prozent" data-format="prozent">49,3 %</b></span>
+        </li>
+        <li class="vergleich__zeile">
+          <span class="vergleich__name">Beides zusammengeführt</span>
+          <span class="vergleich__wert"><span class="vergleich__was">richtig auf Platz 1</span><b data-wert="q:ergebnis.C_hybrid.top1_prozent" data-format="prozent">77,8 %</b></span>
+          <span class="vergleich__wert vergleich__wert--falsch"><span class="vergleich__was">falsch ganz oben</span><b data-wert="q:ergebnis.C_hybrid.falsch_top1_prozent" data-format="prozent">16,4 %</b></span>
+        </li>
+        <li class="vergleich__zeile vergleich__zeile--bestes">
+          <span class="vergleich__name">Schraubi vollständig</span>
+          <span class="vergleich__wert"><span class="vergleich__was">richtig auf Platz 1</span><b data-wert="q:ergebnis.D_voll.top1_prozent" data-format="prozent">93,2 %</b></span>
+          <span class="vergleich__wert vergleich__wert--falsch"><span class="vergleich__was">falsch ganz oben</span><b data-wert="q:ergebnis.D_voll.falsch_top1_prozent" data-format="prozent">1,9 %</b></span>
+        </li>
+      </ol>
+      <p class="fussnote">Reproduzierbar mit <code>bench/qualitaet.py</code>, Messdatei <code>bench/results/qualitaet.json</code>. <a href="#benchmarks" data-reiter-link="benchmarks">Alle Messungen als Diagramme</a></p>
+    </div>
+  </section>
+
+  <section class="abschnitt" id="funktionen" aria-labelledby="t-funktionen">
+    <div class="rahmen zweispaltig">
+      <div>
+        <h2 id="t-funktionen">Fragt nach, bis das Teil passt – wie ein Verkäufer am Tresen</h2>
+        <ul class="punkte">
+          <li>Klick-Interview ohne Tippen: Marke, Modell, Baujahr, Bauteil – jede Auswahl aus dem Lager, mit Stückzahl.</li>
+          <li>Versteht Laiensprache: „Winker vorne“ wird zur Blinkleuchte, „Rueklicht“ zur Rückleuchte.</li>
+          <li>Ehrlich bei Lücken: Unter der Mindestähnlichkeit heißt es „habe ich nicht“ statt sechs falscher Teile.</li>
+          <li>Liegt ein Teil auf eBay, gibt es einen großen Knopf dorthin. Die Lieferzeit rechnet mit Bestellschluss, Wochenende und Feiertagen in Nordrhein-Westfalen.</li>
+        </ul>
+      </div>
+      <div class="telefonpaar">
+        <figure class="telefon"><img src="assets/img/b-interview-marke.jpg" alt="Auswahl der Marke mit Stückzahl aus dem Lager" width="700" height="1060" loading="lazy"></figure>
+        <figure class="telefon"><img src="assets/img/i-ebay.jpg" alt="Großer Knopf zum eBay-Angebot" width="700" height="1060" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="abschnitt abschnitt--flaeche" id="betreiber" aria-labelledby="t-betreiber">
+    <div class="rahmen zweispaltig zweispaltig--umgekehrt">
+      <div>
+        <h2 id="t-betreiber">Zahlen auf Zuruf, getrennt vom Kunden</h2>
+        <ul class="punkte">
+          <li>Umsatz, Bestseller und Lagerbestand im selben Fenster, mit eigener Anmeldung und getrenntem Verlauf.</li>
+          <li>„Suchen ohne Treffer“ zeigt Nachfrage, die der Bestand nicht deckt – eine fertige Einkaufsliste.</li>
+          <li>Fragt ein Kunde nach dem Umsatz, bekommt er nichts. Die Chat-Rolle hat in der Datenbank kein Leserecht auf Verkäufe.</li>
+        </ul>
+      </div>
+      <div class="telefonpaar">
+        <figure class="telefon"><img src="assets/img/j-kunde-blockiert.jpg" alt="Ein Kunde fragt nach dem Umsatz und erhält keine Auskunft" width="700" height="1060" loading="lazy"></figure>
+        <figure class="telefon"><img src="assets/img/n-nachfrageluecken.jpg" alt="Betriebsleitung mit Umsatz, Bestsellern und Suchen ohne Treffer" width="700" height="1060" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="abschnitt" id="vertrauen" aria-labelledby="t-vertrauen">
+    <div class="rahmen">
+      <h2 id="t-vertrauen">Kein Wort erfunden: Preis, Bestand und Lieferzeit kommen aus dem Lager</h2>
+      <dl class="raster-vier">
+        <div><dt>Feste Vorlagen</dt><dd>Jede Antwort ist ein fester Satz mit geprüften Werten aus der Datenbank. Kein erfundener Preis, keine erfundene Teilenummer.</dd></div>
+        <div><dt>Ehrlich bei Lücken</dt><dd>Findet Schraubi das Teil nur für ein anderes Modell, sagt er das – statt stillschweigend etwas Ähnliches anzubieten.</dd></div>
+        <div><dt>Kein Angriffsweg</dt><dd>Ohne Anweisungstext an ein Sprachmodell gibt es nichts, was ein Angreifer umschreiben könnte (Prompt Injection).</dd></div>
+        <div><dt>Keine Kosten je Gespräch</dt><dd>Die Bedeutungssuche läuft auf dem eigenen Server, ohne fremden Dienst.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="abschnitt abschnitt--flaeche" id="einbau" aria-labelledby="t-einbau">
+    <div class="rahmen">
+      <h2 id="t-einbau">Eine Zeile Code, rechtlich sauber</h2>
+      <pre class="codezeile"><code>&lt;script src="https://ihre-adresse/widget.js" defer&gt;&lt;/script&gt;</code></pre>
+      <p class="einleitung">Kein Framework, keine Änderung am Shopsystem. Der Lagerabgleich läuft täglich als Tabellendatei (CSV, Comma-Separated Values) oder als JSON-Datei (JavaScript Object Notation). Eine fehlerhafte Zeile verwirft nicht die ganze Lieferung, sie wird mit Grund gemeldet.</p>
+      <dl class="dreiklang dreiklang--hell">
+        <div><dt>KI-Verordnung der Europäischen Union</dt><dd>Offenlegung nach Artikel 50 dreifach: im ersten Satz, im festen Hinweisband und unter „Was heißt das?“. Kein Hochrisiko-System.</dd></div>
+        <div><dt>Datenschutz</dt><dd>Keine Namen, keine E-Mail-Adressen, keine IP-Adressen, keine Cookies. Erfolglose Suchbegriffe werden nach 90 Tagen gelöscht.</dd></div>
+        <div><dt>Barrierefreiheit</dt><dd>Nach dem Barrierefreiheitsstärkungsgesetz: 17 px Grundschrift, Knöpfe ab 48 px, volle Tastaturbedienung, Beschriftungen für Vorlesesoftware.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="abschnitt" id="rechenbeispiel" aria-labelledby="t-rechnen">
+    <div class="rahmen rechner">
+      <div>
+        <h2 id="t-rechnen">Was die gemessene Trefferquote für Ihren Umsatz bedeutet</h2>
+        <p class="einleitung">Die beiden Trefferquoten sind gemessen. Alle anderen Werte sind Annahmen – tragen Sie Ihre eigenen ein.</p>
+        <form class="rechner__eingaben" id="rechner" novalidate>
+          <label>Suchen pro Monat in Ihrem Shop <input id="r-suchen" type="number" inputmode="numeric" min="0" step="100" value="3000"></label>
+          <label>Davon ohne Teilenummer (%) <input id="r-anteil" type="number" inputmode="numeric" min="0" max="100" step="5" value="40"></label>
+          <label>Kaufquote, wenn das Teil gefunden wird (%) <input id="r-kauf" type="number" inputmode="numeric" min="0" max="100" step="1" value="8"></label>
+          <label>Durchschnittlicher Bestellwert (€) <input id="r-wert" type="number" inputmode="numeric" min="0" step="5" value="85"></label>
+          <p class="rechner__fest"><span>Treffer heute (Volltextsuche, gemessen)</span><b data-wert="q:ergebnis.A_volltext.top1_prozent" data-format="prozent">61,8 %</b></p>
+          <p class="rechner__fest"><span>Treffer mit Schraubi (gemessen)</span><b data-wert="q:ergebnis.D_voll.top1_prozent" data-format="prozent">93,2 %</b></p>
+        </form>
+      </div>
+      <output class="rechner__ergebnis" for="r-suchen r-anteil r-kauf r-wert" aria-live="polite">
+        <span><b id="r-gefunden">377</b> zusätzlich gefundene Teile pro Monat</span>
+        <span><b id="r-bestellungen">30</b> zusätzliche Bestellungen pro Monat</span>
+        <span><b id="r-umsatz">30.747 €</b> zusätzlicher Umsatz pro Jahr</span>
+      </output>
+    </div>
+  </section>
+
+  <section class="abschnitt abschnitt--flaeche" id="probelauf" aria-labelledby="t-probelauf">
+    <div class="rahmen">
+      <h2 id="t-probelauf">Der nächste Schritt: ein Probelauf mit Ihrem eigenen Lager</h2>
+      <ol class="schritte">
+        <li><b>Lagerexport</b><span>Sie geben einen Export Ihres Bestands als Tabellendatei.</span></li>
+        <li><b>Messung</b><span>Schraubi wird mit echten Anfragen Ihrer Kunden gemessen – mit derselben Methode wie hier.</span></li>
+        <li><b>Entscheidung</b><span>Sie entscheiden anhand der Zahlen, nicht anhand einer Vorführung.</span></li>
+      </ol>
+    </div>
+  </section>
+</section>
+
+<!-- ========== Reiter 2: Organigramm ========== -->
+<section class="reiterflaeche" id="organigramm" role="tabpanel" aria-labelledby="reiter-organigramm" tabindex="-1">
+  <div class="rahmen plan" data-plan>
+    <div class="plan__strecke">
+      <div class="seitenkopf">
+        <h1>So arbeitet Schraubi</h1>
+    <p class="einleitung">Drei Wege führen durch ein System: die Anfrage des Kunden, der tägliche Lagerabgleich und der getrennte Zugang des Betreibers. Alle drei treffen sich in einer einzigen PostgreSQL-Datenbank. Bei jeder Station steht, welche Fähigkeit dort angewandt wird.</p>
+      </div>
+      <div class="plan__weg" data-weg="kunde">
+        <h2 class="plan__wegname">Anfrage des Kunden</h2>
+        <ol class="plan__stationen">
+          <li class="station" data-station data-nutzt="">
+            <button type="button" class="station__kopf" aria-expanded="false"><span class="station__punkt" aria-hidden="true"></span><span class="station__name">Chat-Fenster im Shop</span><span class="station__kurz">Kunde beschreibt den Schaden</span></button>
+            <div class="station__mehr">
+              <p class="station__was">Eine einzige JavaScript-Datei, mit einer Zeile in jeden Shop eingebaut. Der Kunde schreibt frei oder klickt sich durch Marke, Modell, Baujahr und Bauteil.</p>
+              <p class="station__beispiel">„das rote Glas hinten links ist kaputt“</p>
+              <ul class="faehigkeiten"><li>JavaScript ohne Abhängigkeiten</li><li>Barrierefreiheit nach dem Barrierefreiheitsstärkungsgesetz</li><li>Offenlegung nach Artikel 50 der KI-Verordnung</li></ul>
+            </div>
+          </li>
+          <li class="station" data-station data-nutzt="sales-gesperrt">
+            <button type="button" class="station__kopf" aria-expanded="false"><span class="station__punkt" aria-hidden="true"></span><span class="station__name">Schutzregeln</span><span class="station__kurz">Betriebszahlen bleiben gesperrt</span></button>
+            <div class="station__mehr">
+              <p class="station__was">Prüft zuerst, ob nach Betriebszahlen wie Umsatz oder Marge gefragt wird. Kunden bekommen darauf keine Auskunft – und selbst ein Programmierfehler käme nicht an die Verkäufe, weil die Chat-Rolle in der Datenbank kein Leserecht darauf hat.</p>
+              <p class="station__beispiel">Keine Frage nach Betriebszahlen. Die Anfrage geht weiter.</p>
+              <ul class="faehigkeiten"><li>Schutzregeln in der Anwendung</li><li>Rechtetrennung in PostgreSQL (Rollen und Leserechte)</li></ul>
+            </div>
+          </li>
+          <li class="station" data-station data-nutzt="parts">
+            <button type="button" class="station__kopf" aria-expanded="false"><span class="station__punkt" aria-hidden="true"></span><span class="station__name">Anfrage verstehen</span><span class="station__kurz">Bauteil, Fahrzeug und Lage erkennen</span></button>
+            <div class="station__mehr">
+              <p class="station__was">Zieht Tippfehler gerade, übersetzt Umgangssprache in Fachbegriffe und erkennt Bauteil, Marke, Modell und Lage – abgeglichen mit dem tatsächlichen Lagerbestand, nicht mit einer gepflegten Liste.</p>
+              <p class="station__beispiel">„rotes Glas hinten links“ wird zu: Bauteil Rückleuchte, Lage links.</p>
+              <ul class="faehigkeiten"><li>Tippfehlerkorrektur</li><li>Wortschatz für Umgangssprache</li><li>Erkennung aus dem echten Bestand</li></ul>
+            </div>
+          </li>
+          <li class="station" data-station data-nutzt="parts hnsw">
+            <button type="button" class="station__kopf" aria-expanded="false"><span class="station__punkt" aria-hidden="true"></span><span class="station__name">Doppelte Suche</span><span class="station__kurz">Nach Bedeutung und nach Wörtern</span></button>
+            <div class="station__mehr">
+              <p class="station__was">Sucht nach Bedeutung und nach Wörtern zugleich und führt beide Ranglisten zu einer zusammen. Unter der Mindestähnlichkeit gilt: lieber „habe ich nicht“ als ein falsches Teil.</p>
+              <p class="station__beispiel">Rückleuchten links aus dem Lager, nach Passung sortiert.</p>
+              <ul class="faehigkeiten"><li>Vektorsuche mit pgvector und HNSW-Index (Hierarchical Navigable Small World)</li><li>Deutsche Volltextsuche</li><li>Trigramm-Suche bei starken Tippfehlern</li><li>Reciprocal Rank Fusion: zwei Ranglisten zu einer</li><li>Mindestähnlichkeit als Schwelle</li></ul>
+            </div>
+          </li>
+          <li class="station" data-station data-nutzt="parts protokoll">
+            <button type="button" class="station__kopf" aria-expanded="false"><span class="station__punkt" aria-hidden="true"></span><span class="station__name">Antwort aus festen Vorlagen</span><span class="station__kurz">Nur Werte aus der Datenbank</span></button>
+            <div class="station__mehr">
+              <p class="station__was">Setzt geprüfte Werte aus der Datenbank in feste Sätze ein: Preis, Zustand, Lagerstand, Lieferzeit. Kein Sprachmodell formuliert frei – so kann nichts erfunden werden.</p>
+              <p class="station__beispiel">Die Rückleuchte links mit Preis, Zustand und Lagerstand. Liegt sie auf eBay, ein großer Knopf dorthin.</p>
+              <ul class="faehigkeiten"><li>Gesprächsführung ohne frei erzeugten Text</li><li>Lieferzeit mit Bestellschluss und Feiertagen</li><li>Protokoll ohne Personenbezug, Löschung nach 90 Tagen</li></ul>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="plan__weg" data-weg="lager">
+        <h2 class="plan__wegname">Täglicher Lagerabgleich</h2>
+        <ol class="plan__stationen">
+          <li class="station" data-station data-nutzt="parts">
+            <button type="button" class="station__kopf" aria-expanded="false"><span class="station__punkt" aria-hidden="true"></span><span class="station__name">Bestand einlesen</span><span class="station__kurz">Warenwirtschaft liefert die Liste</span></button>
+            <div class="station__mehr">
+              <p class="station__was">Die Warenwirtschaft des Shops schickt ihren Bestand an die Schnittstelle des Servers, mit deutschen oder englischen Spaltennamen. Eine fehlerhafte Zeile wird mit Zeilennummer und Grund gemeldet, der Rest ist sofort im Bot.</p>
+              <p class="station__beispiel">Nur mit Schlüssel erreichbar. Unveränderte Teile bleiben unberührt.</p>
+              <ul class="faehigkeiten"><li>Schnittstelle mit FastAPI</li><li>Fehlertoleranter Abgleich Zeile für Zeile</li><li>Zugang nur mit Schlüssel</li></ul>
+            </div>
+          </li>
+          <li class="station" data-station data-nutzt="hnsw">
+            <button type="button" class="station__kopf" aria-expanded="false"><span class="station__punkt" aria-hidden="true"></span><span class="station__name">Bedeutung berechnen</span><span class="station__kurz">Ein Vektor je Teil</span></button>
+            <div class="station__mehr">
+              <p class="station__was">Jedes Teil bekommt einen Bedeutungsvektor mit 384 Zahlen, berechnet von einem mehrsprachigen Satzmodell auf dem eigenen Server. Neu berechnet wird nur, was sich geändert hat.</p>
+              <p class="station__beispiel">Keine laufenden Kosten, keine Daten an Dritte.</p>
+              <ul class="faehigkeiten"><li>Einbettungen mit fastembed und einem mehrsprachigen Satzmodell</li><li>Austauschbare Anbieter hinter einer Schnittstelle</li><li>Änderungserkennung per Prüfsumme</li></ul>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="plan__weg" data-weg="betrieb">
+        <h2 class="plan__wegname">Zugang des Betreibers</h2>
+        <ol class="plan__stationen">
+          <li class="station" data-station data-nutzt="">
+            <button type="button" class="station__kopf" aria-expanded="false"><span class="station__punkt" aria-hidden="true"></span><span class="station__name">Eigene Anmeldung</span><span class="station__kurz">Passwortfeld statt Chat</span></button>
+            <div class="station__mehr">
+              <p class="station__was">Der Betreiber meldet sich im selben Fenster an, über ein eigenes Passwortfeld statt über den Chat. Das Passwort erscheint daher weder im Verlauf noch in einem Protokoll.</p>
+              <p class="station__beispiel">Die Sitzung gilt 30 Minuten. Nach zu vielen Fehlversuchen ist die Anmeldung 15 Minuten gesperrt.</p>
+              <ul class="faehigkeiten"><li>Passwort-Hash mit scrypt</li><li>Signierte Sitzung</li><li>Fehlversuchsbremse</li></ul>
+            </div>
+          </li>
+          <li class="station" data-station data-nutzt="sales protokoll parts">
+            <button type="button" class="station__kopf" aria-expanded="false"><span class="station__punkt" aria-hidden="true"></span><span class="station__name">Kennzahlen auf Zuruf</span><span class="station__kurz">Umsatz, Bestseller, Lücken</span></button>
+            <div class="station__mehr">
+              <p class="station__was">Fragen wie „Umsatz heute“ oder „Welche Suchen hatten keine Treffer?“ wählen eine feste, geprüfte Abfrage. Es gibt keinen Weg von freiem Text zu frei erzeugten Datenbankbefehlen (SQL, Structured Query Language).</p>
+              <p class="station__beispiel">„Suchen ohne Treffer“ wird zur nächsten Einkaufsliste.</p>
+              <ul class="faehigkeiten"><li>Feste SQL-Abfragen</li><li>Auswertung von Umsatz, Bestsellern und Lagerbestand</li></ul>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <aside class="plan__tafel" aria-label="Ausgewählte Station">
+      <div class="tafel">
+        <div class="tafel__kopf">
+          <span class="tafel__zaehler" data-tafel-zaehler>Station 1 von 9</span>
+          <div class="tafel__steuerung">
+            <button type="button" class="rund" data-plan-zurueck aria-label="Vorherige Station"><svg width="18" height="18" aria-hidden="true"><use href="#i-zurueck"/></svg></button>
+            <button type="button" class="rund" data-plan-spielen aria-label="Ablauf anhalten"><svg width="18" height="18" aria-hidden="true"><use href="#i-pause"/></svg></button>
+            <button type="button" class="rund" data-plan-vor aria-label="Nächste Station"><svg width="18" height="18" aria-hidden="true"><use href="#i-vor"/></svg></button>
+          </div>
+        </div>
+        <h3 class="tafel__titel" data-tafel-titel>Chat-Fenster im Shop</h3>
+        <div class="tafel__inhalt" data-tafel-inhalt aria-live="polite"></div>
+        <div class="datenbank" aria-label="Eine PostgreSQL-Datenbank">
+          <p class="datenbank__titel"><svg width="16" height="16" aria-hidden="true"><use href="#i-db"/></svg>Eine Datenbank: PostgreSQL 16</p>
+          <ul class="datenbank__teile">
+            <li data-speicher="parts"><b>Teilestamm</b><span>Tabelle parts</span></li>
+            <li data-speicher="hnsw"><b>Vektorindex</b><span>pgvector, HNSW</span></li>
+            <li data-speicher="protokoll"><b>Ereignisprotokoll</b><span>ohne Personenbezug</span></li>
+            <li data-speicher="sales"><b>Verkaufsdaten</b><span data-sales-hinweis>Tabelle sales</span><svg class="datenbank__schloss" width="16" height="16" aria-hidden="true"><use href="#i-schloss"/></svg></li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="rahmen werkbank">
+    <h2>Rund um den Betrieb</h2>
+    <p class="einleitung">Was jede Station trägt: dieselben Werkzeuge für Bau, Prüfung und Betrieb.</p>
+    <ul class="faehigkeiten faehigkeiten--gross">
+      <li>Python 3.12 mit vollständigen Typangaben</li>
+      <li>FastAPI für alle Schnittstellen</li>
+      <li>PostgreSQL 16 mit pgvector</li>
+      <li>Docker und eine Betriebsbeschreibung für Render</li>
+      <li>Automatische Tests mit pytest gegen eine echte Datenbank</li>
+      <li>GitHub Actions: Stilprüfung, Typprüfung, Tests und Messreihe bei jeder Änderung</li>
+      <li>Oberflächentest mit Playwright im echten Browser</li>
+      <li>Reproduzierbare Messreihen</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ========== Reiter 3: Benchmarks ========== -->
+<section class="reiterflaeche" id="benchmarks" role="tabpanel" aria-labelledby="reiter-benchmarks" tabindex="-1">
+  <div class="rahmen seitenkopf">
+    <h1>Was gemessen wurde</h1>
+    <p class="einleitung">Jede Zahl auf dieser Seite stammt aus einer Messdatei im Repository. Die Diagramme werden direkt aus diesen Dateien gezeichnet. Gemessen wurde mit erfundenen, aber realistisch aufgebauten Lagerdaten.</p>
+  </div>
+
+  <section class="rahmen messblock" aria-labelledby="t-m1">
+    <h2 id="t-m1">Ein falsches Teil steht kaum noch oben: <span data-wert="q:ergebnis.B_vektor.falsch_top1_prozent" data-format="prozent">49,3 %</span> bei der Vektorsuche allein, <span data-wert="q:ergebnis.D_voll.falsch_top1_prozent" data-format="prozent">1,9 %</span> mit Schraubi</h2>
+    <p class="einleitung"><span data-wert="q:anfragen" data-format="zahl">207</span> Kundenanfragen gegen <span data-wert="q:bestand" data-format="zahl">10.000</span> Lagerteile. Geprüft wird das Bauteil: Wer ein Rücklicht sucht, ist mit jedem passenden Rücklicht bedient – aber nie mit einer Bremsscheibe.</p>
+    <div class="diagrammpaar">
+      <figure class="diagramm" data-diagramm="treffer"><figcaption>Richtiges Teil auf Platz 1 <span class="diagramm__richtung">höher ist besser</span></figcaption><div class="diagramm__flaeche"></div></figure>
+      <figure class="diagramm" data-diagramm="falsch"><figcaption>Falsches Teil ganz oben <span class="diagramm__richtung">niedriger ist besser</span></figcaption><div class="diagramm__flaeche"></div></figure>
+    </div>
+    <details class="tabellenansicht" data-tabelle="verfahren"><summary>Als Tabelle zeigen</summary></details>
+    <p class="quelle">Quelle: <a href="https://github.com/DanielHuette/autoteile-chatbot-schraubi/blob/main/bench/results/qualitaet.json">bench/results/qualitaet.json</a>, erzeugt mit <code>bench/qualitaet.py</code></p>
+  </section>
+
+  <section class="rahmen messblock" aria-labelledby="t-m2">
+    <h2 id="t-m2">Wo die Bedeutungssuche allein nicht reicht</h2>
+    <p class="einleitung">Richtiges Teil auf Platz 1, nach Art der Anfrage. Bei Umgangssprache trifft die Vektorsuche allein in <span data-wert="q:ergebnis.B_vektor.gruppen.umgangssprache.top1_prozent" data-format="prozent">20,0 %</span> der Fälle, Schraubi in <span data-wert="q:ergebnis.D_voll.gruppen.umgangssprache.top1_prozent" data-format="prozent">80,0 %</span>. Bei fremden Themen zählt als richtig, dass nichts angezeigt wird.</p>
+    <figure class="diagramm diagramm--hantel" data-diagramm="gruppen">
+      <figcaption>Richtiges Teil auf Platz 1 je Anfrageart</figcaption>
+      <ul class="legende"><li class="legende--blau">Vektorsuche allein</li><li class="legende--gold">Schraubi vollständig</li></ul>
+      <div class="diagramm__flaeche"></div>
+    </figure>
+    <details class="tabellenansicht" data-tabelle="gruppen"><summary>Als Tabelle zeigen</summary></details>
+    <p class="quelle">Quelle: <a href="https://github.com/DanielHuette/autoteile-chatbot-schraubi/blob/main/bench/results/qualitaet.json">bench/results/qualitaet.json</a>, Abschnitt „gruppen“</p>
+  </section>
+
+  <section class="rahmen messblock" aria-labelledby="t-m3">
+    <h2 id="t-m3">Der Index hält die Suche schnell, ohne Treffer zu verlieren</h2>
+    <p class="einleitung">Bei <span data-wert="l:ergebnis.10000.teile" data-format="zahl">10.000</span> Teilen dauert eine Suche mit Index <span data-wert="l:ergebnis.10000.hnsw.median_ms" data-format="ms">1,53 ms</span> statt <span data-wert="l:ergebnis.10000.sequenziell.median_ms" data-format="ms">5,68 ms</span> – <span data-wert="l:ergebnis.10000.beschleunigung" data-format="faktor">3,7-mal</span> so schnell. Dabei findet der Index <span data-wert="l:ergebnis.10000.recall_at_k" data-format="anteil">99,4 %</span> der zehn exakt besten Teile.</p>
+    <figure class="diagramm" data-diagramm="latenz">
+      <figcaption>Dauer einer Suche, Median in Millisekunden <span class="diagramm__richtung">kürzer ist besser</span></figcaption>
+      <ul class="legende"><li class="legende--blau">ohne Index</li><li class="legende--gold">mit HNSW-Index</li></ul>
+      <div class="diagramm__flaeche"></div>
+    </figure>
+    <details class="tabellenansicht" data-tabelle="latenz"><summary>Als Tabelle zeigen</summary></details>
+    <p class="quelle">Quelle: <a href="https://github.com/DanielHuette/autoteile-chatbot-schraubi/blob/main/bench/results/latenz.json">bench/results/latenz.json</a>, erzeugt mit <code>bench/latenz.py</code>: <span data-wert="l:suchtexte" data-format="zahl">16</span> verschiedene Suchtexte, je <span data-wert="l:wiederholungen" data-format="zahl">30</span> Wiederholungen nach Warmlauf. Ein HNSW-Index ist ein Näherungsverfahren; deshalb wird mitgemessen, wie viele der exakt besten Treffer er findet.</p>
+  </section>
+
+  <section class="rahmen messblock messblock--fakten" aria-labelledby="t-m4">
+    <h2 id="t-m4">Wie gemessen und geprüft wird</h2>
+    <dl class="raster-vier">
+      <div><dt>154 automatische Tests</dt><dd>gegen eine echte PostgreSQL-Datenbank mit pgvector, bei jeder Änderung über GitHub Actions. Quelle: README, Abschnitt „Tests“.</dd></div>
+      <div><dt>Satzmodell</dt><dd><span data-wert="q:einbettung.modell" data-format="text">sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2</span>, <span data-wert="q:einbettung.dimensionen" data-format="zahl">384</span> Dimensionen, auf dem eigenen Server.</dd></div>
+      <div><dt>Prüfkatalog</dt><dd>Handgeschriebene Fälle mit Umgangssprache, Umschreibungen, Schadensbildern, Tippfehlern und Teilenummern, dazu Anfragen aus dem Bestand und Anfragen, auf die es nichts geben darf.</dd></div>
+      <div><dt>Grenzen, offen gesagt</dt><dd>Die Lagerdaten sind erzeugt. Mit echten Daten eines Shops wären neue Messungen nötig – genau das ist der Probelauf.</dd></div>
+    </dl>
+  </section>
+</section>
+
+<!-- ========== Reiter 4: Präsentation ========== -->
+<section class="reiterflaeche" id="praesentation" role="tabpanel" aria-labelledby="reiter-praesentation" tabindex="-1">
+  <div class="rahmen seitenkopf seitenkopf--knapp">
+    <h1>Schraubi in einer Minute</h1>
+    <p class="einleitung">Ein kurzer Film in sieben Szenen, der von selbst läuft. Anhalten, zurückspulen oder ein Kapitel direkt wählen.</p>
+  </div>
+
+  <div class="rahmen film" data-film>
+    <div class="film__leinwand" data-film-leinwand aria-roledescription="Film" aria-label="Schraubi in sieben Szenen">
+
+      <article class="szene szene--stimme" data-szene="Ein Kunde schreibt" aria-label="Szene 1: Ein Kunde schreibt">
+        <p class="szene__klein">Ein Kunde, 72 Jahre alt, schreibt in den Chat</p>
+        <p class="szene__stimme"><span>„das</span> <span>rote</span> <span>Glas</span> <span>hinten</span> <span>links</span> <span>ist</span> <span>kaputt“</span></p>
+      </article>
+
+      <article class="szene szene--scheitern" data-szene="Heutige Suchen scheitern" aria-label="Szene 2: Heutige Suchen scheitern">
+        <p class="szene__titel">Heutige Suchen lassen ihn allein</p>
+        <div class="szene__karten">
+          <div class="filmkarte"><span class="filmkarte__was">Wortsuche</span><span class="filmkarte__ergebnis">kein Treffer</span></div>
+          <div class="filmkarte"><span class="filmkarte__was">Bedeutungssuche</span><span class="filmkarte__ergebnis filmkarte__ergebnis--durch">Bremsscheibe</span></div>
+        </div>
+      </article>
+
+      <article class="szene szene--verstehen" data-szene="Schraubi versteht" aria-label="Szene 3: Schraubi versteht">
+        <p class="szene__titel">Schraubi versteht, was gemeint ist</p>
+        <p class="szene__satz"><span class="wort wort--a">rote</span> <span class="wort wort--a">Glas</span> <span class="wort wort--a">hinten</span> <span class="wort wort--b">links</span></p>
+        <p class="szene__marken"><span class="filmmarke filmmarke--a">Bauteil: Rückleuchte</span><span class="filmmarke filmmarke--b">Lage: links</span></p>
+      </article>
+
+      <article class="szene szene--suchen" data-szene="Sucht doppelt" aria-label="Szene 4: Sucht doppelt">
+        <p class="szene__titel">Sucht doppelt – nach Bedeutung und nach Wörtern</p>
+        <svg class="szene__stroeme" viewBox="0 0 600 220" aria-hidden="true">
+          <path class="strom strom--a" d="M20 40 C 220 40, 260 110, 420 110"/>
+          <path class="strom strom--b" d="M20 180 C 220 180, 260 110, 420 110"/>
+          <path class="strom strom--c" d="M420 110 L 580 110"/>
+          <text x="20" y="24">Bedeutung</text><text x="20" y="212">Wörter</text><text x="580" y="94" text-anchor="end">eine Rangliste</text>
+        </svg>
+      </article>
+
+      <article class="szene szene--antwort" data-szene="Antwortet aus dem Lager" aria-label="Szene 5: Antwortet aus dem Lager">
+        <div class="szene__spalte">
+          <p class="szene__titel">Antwortet nur mit dem, was wirklich im Lager liegt</p>
+          <p class="szene__klein">Preis, Zustand und Lagerstand aus der Datenbank. Nichts erfunden.</p>
+        </div>
+        <figure class="telefon szene__telefon"><img src="assets/img/h-vage-suche.jpg" alt="Ergebnis: Rückleuchte mit Preis, Zustand und Lagerstand" width="700" height="1060" loading="lazy"></figure>
+      </article>
+
+      <article class="szene szene--getrennt" data-szene="Kunde und Betreiber getrennt" aria-label="Szene 6: Kunde und Betreiber getrennt">
+        <div class="szene__spalte">
+          <p class="szene__titel">Der Betreiber sieht seine Zahlen. Der Kunde nicht.</p>
+          <p class="szene__klein">Eigene Anmeldung, getrennter Verlauf, gesperrte Verkaufsdaten.</p>
+        </div>
+        <div class="szene__telefone">
+          <figure class="telefon"><img src="assets/img/j-kunde-blockiert.jpg" alt="Kunde fragt nach Umsatz und wird abgewiesen" width="700" height="1060" loading="lazy"></figure>
+          <figure class="telefon"><img src="assets/img/n-nachfrageluecken.jpg" alt="Betriebsleitung mit Suchen ohne Treffer" width="700" height="1060" loading="lazy"></figure>
+        </div>
+      </article>
+
+      <article class="szene szene--werkzeuge" data-szene="Gebaut mit" aria-label="Szene 7: Gebaut mit">
+        <p class="szene__titel">Gebaut mit</p>
+        <ul class="szene__werkzeuge">
+          <li>Vektorsuche mit pgvector</li><li>Deutsche Volltextsuche</li><li>Reciprocal Rank Fusion</li><li>FastAPI</li><li>Rechtetrennung in PostgreSQL</li><li>Docker</li><li>Automatische Tests mit pytest</li><li>Messreihen</li>
+        </ul>
+        <p class="szene__abspann"><svg width="40" height="40" aria-hidden="true"><use href="#zeichen-repocity"/></svg><span>Schraubi – Spare Parts Assistant, ein Projekt von Daniel Hütte</span></p>
+      </article>
+
+      <p class="film__untertitel" data-film-untertitel aria-hidden="true"></p>
+    </div>
+
+    <div class="film__steuerung">
+      <button type="button" class="rund rund--gross" data-film-spielen aria-label="Film abspielen"><svg width="22" height="22" aria-hidden="true"><use href="#i-play"/></svg></button>
+      <ol class="kapitel" data-film-kapitel aria-label="Kapitel"></ol>
+    </div>
+    <p class="fussnote">Die Zahlen hinter dem Film stehen unter <a href="#benchmarks" data-reiter-link="benchmarks">Benchmarks</a>, ein Rechenbeispiel für Shop-Betreiber unter <a href="#rechenbeispiel">Projekt</a>.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="fuss">
+  <div class="rahmen fuss__innen">
+    <p class="fuss__wer"><svg width="28" height="28" aria-hidden="true"><use href="#zeichen-repocity"/></svg><span>Daniel Hütte, AI Agent Engineer, Münster</span></p>
+    <ul class="fuss__links">
+      <li><a href="https://github.com/DanielHuette/autoteile-chatbot-schraubi">Quelltext auf GitHub</a></li>
+      <li><a href="https://speedofthespirit.dev/de/">speedofthespirit.dev</a></li>
+      <li><a href="https://speedofthespirit.dev/impressum/">Impressum</a></li>
+      <li><a href="https://speedofthespirit.dev/datenschutz/">Datenschutz</a></li>
+    </ul>
+  </div>
+</footer>
+
+<nav class="dock" aria-label="Bereiche">
+  <div class="dock__leiste" role="tablist" aria-label="Bereiche der Projektseite">
+    <a class="dock__reiter" id="reiter-projekt" role="tab" href="#projekt" aria-controls="projekt"><svg width="24" height="24" aria-hidden="true"><use href="#i-projekt"/></svg><span>Projekt</span></a>
+    <a class="dock__reiter" id="reiter-organigramm" role="tab" href="#organigramm" aria-controls="organigramm"><svg width="24" height="24" aria-hidden="true"><use href="#i-organigramm"/></svg><span>Organigramm</span></a>
+    <a class="dock__reiter" id="reiter-benchmarks" role="tab" href="#benchmarks" aria-controls="benchmarks"><svg width="24" height="24" aria-hidden="true"><use href="#i-benchmarks"/></svg><span>Benchmarks</span></a>
+    <a class="dock__reiter" id="reiter-praesentation" role="tab" href="#praesentation" aria-controls="praesentation"><svg width="24" height="24" aria-hidden="true"><use href="#i-praesentation"/></svg><span>Präsentation</span></a>
+  </div>
+</nav>
+</body>
+</html>
